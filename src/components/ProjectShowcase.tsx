@@ -66,9 +66,6 @@ export default function ProjectShowcase({ hideHeader = false }: { hideHeader?: b
             <span className="font-mono text-[10px] text-accent uppercase tracking-widest block mb-2">Selected Works</span>
             <h2 className="text-4xl md:text-6xl font-header leading-none">PROJECT <br /> SHOWCASE</h2>
           </div>
-          <div className="hidden md:block text-right">
-            <span className="font-mono text-[10px] text-foreground/40 uppercase">Filter: High Performance</span>
-          </div>
         </div>
       )}
 
