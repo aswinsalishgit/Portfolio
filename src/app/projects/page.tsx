@@ -37,7 +37,7 @@ export default function ProjectsPage() {
               
               <div className="w-full md:w-[55%] flex flex-col gap-8">
                 <div className="flex justify-between items-start">
-                  <span className="font-mono text-accent text-xs">ID // {project.id}</span>
+                  <span className="font-mono text-accent text-xs">Project {project.id}</span>
                   <span className="font-mono text-[10px] text-foreground/40 uppercase tracking-widest">{project.category}</span>
                 </div>
                 

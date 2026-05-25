@@ -272,8 +272,12 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                     <span className="font-mono text-sm">{"2026 // SYSTEM"}</span>
                   </div>
                   <div className="flex flex-col gap-2">
-                    <span className="font-mono text-[10px] text-foreground/30 uppercase">{"Status"}</span>
-                    <span className="font-mono text-sm uppercase">{"Prototype V1.0"}</span>
+                    <span className="font-mono text-[10px] text-foreground/30 uppercase">
+                      {project.slug === "buffer" ? "Latest Version" : "Status"}
+                    </span>
+                    <span className="font-mono text-sm uppercase">
+                      {project.slug === "buffer" ? "Buffer v1.0.0" : "Prototype V1.0"}
+                    </span>
                   </div>
                 </div>
             </div>
