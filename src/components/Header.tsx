@@ -20,7 +20,8 @@ export default function Header() {
 
   // Close menu on route change
   useEffect(() => {
-    setIsOpen(false);
+    const handle = setTimeout(() => setIsOpen(false), 0);
+    return () => clearTimeout(handle);
   }, [pathname]);
 
   // Handle body scroll locking
