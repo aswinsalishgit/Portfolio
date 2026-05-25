@@ -47,7 +47,7 @@ export default function TermsAndConditions() {
                 <span className="font-mono text-[10px] uppercase text-accent">[03] Usage Limits</span>
                 <div className="md:col-span-3 space-y-4">
                   <p className="font-mono text-sm leading-relaxed text-foreground/70">
-                    You agree not to attempt to reverse engineer, scrape, or disrupt the website's performance. 
+                    You agree not to attempt to reverse engineer, scrape, or disrupt the website&apos;s performance. 
                     This portfolio is designed to demonstrate high-performance digital architectures and should be treated with respect to its engineering.
                   </p>
                 </div>
@@ -61,7 +61,7 @@ export default function TermsAndConditions() {
                 <span className="font-mono text-[10px] uppercase text-accent">[04] Liability</span>
                 <div className="md:col-span-3 space-y-4">
                   <p className="font-mono text-sm leading-relaxed text-foreground/70">
-                    While I strive for technical perfection, the information provided on this site is "as is". 
+                    While I strive for technical perfection, the information provided on this site is &quot;as is&quot;. 
                     I am not liable for any damages arising from the use of this website or the information contained herein.
                   </p>
                 </div>
