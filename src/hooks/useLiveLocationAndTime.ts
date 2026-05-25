@@ -8,7 +8,7 @@ export function useLiveLocationAndTime(defaultLocation: string = "") {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const mountHandle = setTimeout(() => setMounted(true), 0);
     
     // Initial time set
     const updateTime = () => {
@@ -64,6 +64,7 @@ export function useLiveLocationAndTime(defaultLocation: string = "") {
 
     return () => {
       clearInterval(intervalId);
+      clearTimeout(mountHandle);
       if (watchId !== null && navigator.geolocation) {
         navigator.geolocation.clearWatch(watchId);
       }
