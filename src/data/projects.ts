@@ -46,7 +46,7 @@ export const projects: Project[] = [
     id: "03",
     slug: "buffer",
     title: "Buffer Game",
-    category: "Buffer",
+    category: "GAME",
     image: "/buffer.png",
     desc: "A 1v1 psychological deduction game disguised as a mobile app.",
     fullDesc: "Buffer is a high-speed, simultaneous-reveal logic game built natively for Android. It takes the core concept of Rock-Paper-Scissors and completely shatters it by introducing a 2-Round Memory Cooldown and a Heuristic AI Taunt Engine. You are not playing against a random number generator; you are playing against an algorithm that tracks your habits, analyzes your frequency, and actively trash-talks your blunders. The application is built entirely in Jetpack Compose, featuring state-driven rendering and a zero-latency tactical UI.",
