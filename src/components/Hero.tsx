@@ -87,10 +87,7 @@ export default function Hero() {
         <div className="flex flex-col gap-0">
           <div className="overflow-hidden mb-2 flex items-center justify-between">
             <span className="hero-accent font-mono text-xs md:text-sm text-accent uppercase tracking-[0.4em] block">
-              CREATIVE DEVELOPER // PORTFOLIO 2026
-            </span>
-            <span className="hero-accent font-mono text-[8px] md:text-[10px] text-foreground/30 uppercase tracking-widest hidden md:block">
-              Purpose: Digital Architecture & Talent Discovery System
+              FULLSTACK DEVELOPER // PORTFOLIO 2026
             </span>
           </div>
           
@@ -108,8 +105,8 @@ export default function Hero() {
                 onClick={() => {
                   if (navigator.share) {
                     navigator.share({
-                      title: 'Aswin Salish | Creative Developer',
-                      text: 'Check out the portfolio of Aswin Salish, a Creative Developer specializing in high-performance digital experiences.',
+                      title: 'Aswin Salish | Fullstack Developer',
+                      text: 'Check out the portfolio of Aswin Salish, a Fullstack Developer specializing in high-performance digital experiences.',
                       url: window.location.origin,
                     });
                   } else {
@@ -131,7 +128,7 @@ export default function Hero() {
         <div className="mt-12 md:mt-24 grid grid-cols-1 md:grid-cols-12 w-full pt-8 border-t border-white/10">
           <div className="md:col-span-4 overflow-hidden">
             <p className="hero-line font-mono text-[10px] md:text-xs text-foreground/50 uppercase leading-relaxed max-w-xs">
-              Sourcing raw mechanical aesthetics and translating them into high-performance digital architectures.
+              ENGINEERING SCALABLE FULL-STACK SYSTEMS AND TRANSLATING COMPLEX LOGIC INTO HIGH-PERFORMANCE WEB APPLICATIONS.
             </p>
           </div>
           <div className="md:col-span-8 flex justify-end items-end gap-12 mt-8 md:mt-0">
