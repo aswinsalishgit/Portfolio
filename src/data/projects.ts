@@ -29,8 +29,8 @@ export const projects: Project[] = [
   {
     id: "02",
     slug: "cockpit-interface",
-    title: "Cockpit Interface",
-    category: "UI/UX Engineering",
+    title: "MM8 App",
+    category: "MM8",
     image: "/project-2.jpeg",
     desc: "Redefining the relationship between driver and machine through high-contrast, zero-latency digital instrumentation.",
     fullDesc: "The Cockpit Interface project focused on human-machine interaction in high-stress environments. We designed a custom operating system that prioritizes essential telemetry using a high-contrast monochromatic palette. The interface responds with zero perceived latency, ensuring the driver is always in sync with the vehicle's internal systems.",
