@@ -101,26 +101,16 @@ export default function Hero() {
               <h1 className="hero-line text-[15vw] md:text-[12vw] font-header leading-[0.8] text-white uppercase tracking-tighter">
                 SALISH
               </h1>
-              <button 
-                onClick={() => {
-                  if (navigator.share) {
-                    navigator.share({
-                      title: 'Aswin Salish | Fullstack Developer',
-                      text: 'Check out the portfolio of Aswin Salish, a Fullstack Developer specializing in high-performance digital experiences.',
-                      url: window.location.origin,
-                    });
-                  } else {
-                    navigator.clipboard.writeText(window.location.origin);
-                    alert("Profile link copied to clipboard!");
-                  }
-                }}
+              <a 
+                href="/Aswin%20Salish%20Resume.pdf"
+                download="Aswin_Salish_Resume.pdf"
                 className="hero-accent group hidden lg:flex flex-col items-end gap-2 pb-4 pointer-events-auto cursor-pointer"
               >
                 <div className="w-24 h-[1px] bg-accent group-hover:w-32 transition-all duration-500" />
                 <span className="font-mono text-[10px] text-accent/60 uppercase group-hover:text-accent transition-colors">
-                  SHARE MY PROFILE
+                  DOWNLOAD RESUME
                 </span>
-              </button>
+              </a>
             </div>
           </div>
         </div>
