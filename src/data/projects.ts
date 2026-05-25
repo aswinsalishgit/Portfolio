@@ -45,8 +45,8 @@ export const projects: Project[] = [
   {
     id: "03",
     slug: "thermal-braking",
-    title: "Thermal Braking",
-    category: "Technical Visualization",
+    title: "Buffer Game",
+    category: "Buffer",
     image: "/project-3.jpeg",
     desc: "Visualizing extreme kinetic energy conversion through heat mapping and mechanical stress simulations.",
     fullDesc: "Thermal Braking is a visualization study into the physics of deceleration. By mapping the heat generated during extreme braking events, we created a visual language that represents energy dissipation. This project served as both a technical audit for brake cooling systems and a piece of generative digital art.",
