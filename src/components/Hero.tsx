@@ -107,7 +107,7 @@ export default function Hero() {
                 className="hero-accent group hidden lg:flex flex-col items-end gap-2 pb-4 pointer-events-auto cursor-pointer"
               >
                 <div className="w-24 h-[1px] bg-accent group-hover:w-32 transition-all duration-500" />
-                <span className="font-mono text-[10px] text-accent/60 uppercase group-hover:text-accent transition-colors">
+                <span className="font-body text-[10px] tracking-widest text-accent/60 uppercase group-hover:text-accent transition-colors">
                   DOWNLOAD RESUME
                 </span>
               </a>
