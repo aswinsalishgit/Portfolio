@@ -123,11 +123,11 @@ export default function Hero() {
           </div>
           <div className="md:col-span-8 flex justify-end items-end gap-12 mt-8 md:mt-0">
             <div className="flex flex-col items-end gap-1">
-              <span className="font-mono text-[10px] text-foreground/30 uppercase">Coordinates</span>
+              <span className="font-mono text-[10px] text-foreground/30 uppercase">{"Coordinates"}</span>
               <span className="font-mono text-[10px] text-foreground/60">{mounted && locationStr ? locationStr : ""}</span>
             </div>
             <div className="flex flex-col items-end gap-1">
-              <span className="font-mono text-[10px] text-foreground/30 uppercase">Local Time</span>
+              <span className="font-mono text-[10px] text-foreground/30 uppercase">{"Local Time"}</span>
               <span className="font-mono text-[10px] text-foreground/60 uppercase">{mounted && timeStr ? timeStr : ""}</span>
             </div>
           </div>
@@ -139,8 +139,18 @@ export default function Hero() {
         <div className="w-[1px] h-12 bg-gradient-to-b from-accent to-transparent relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full bg-accent animate-scroll-line" />
         </div>
-        <span className="font-mono text-[8px] uppercase tracking-widest text-accent/40">Scroll to Explore</span>
+        <span className="font-mono text-[8px] uppercase tracking-widest text-accent/40">{"Scroll to Explore"}</span>
       </div>
+
+      <style jsx>{`
+        @keyframes scroll-line {
+          0% { transform: translateY(-100%); }
+          100% { transform: translateY(100%); }
+        }
+        .animate-scroll-line {
+          animation: scroll-line 2s infinite linear;
+        }
+      `}</style>
     </section>
   );
 }
