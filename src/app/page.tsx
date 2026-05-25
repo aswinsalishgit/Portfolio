@@ -15,7 +15,7 @@ export default function Home() {
             {[
               { label: "01", title: "Recruit", desc: "EVALUATE TECHNICAL BACKGROUND AND SECURE RESUME." },
               { label: "02", title: "Endorse", desc: "APPEND A PUBLIC PEER REVIEW OR VERIFIED RECOMMENDATION." },
-              { label: "03", title: "Subscribe", desc: "RECEIVE REAL-TIME UPDATES ON PROJECT BUILDS AND DEPLOYMENTS." },
+              { label: "03", title: "Subscribe", desc: "RECEIVE UPDATES ON PROJECT BUILDS AND DEPLOYMENTS." },
             ].map((item, i) => (
               <Link 
                 href={item.title === "Subscribe" ? "/connect" : `/${item.title.toLowerCase()}`}
