@@ -8,7 +8,7 @@ export function useLiveLocationAndTime(defaultLocation: string = "") {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const mountHandle = setTimeout(() => setMounted(true), 0);
+    setMounted(true);
     
     // Initial time set
     const updateTime = () => {
@@ -47,7 +47,7 @@ export function useLiveLocationAndTime(defaultLocation: string = "") {
               );
             } else {
               // 'prompt' or 'denied' - DO NOT call geolocation to avoid prompting the user
-              setTimeout(() => setLocationStr("Enable GPS"), 0);
+              setLocationStr("Enable GPS");
             }
           };
 
@@ -56,15 +56,14 @@ export function useLiveLocationAndTime(defaultLocation: string = "") {
         })
         .catch((error) => {
           console.error("Permissions query failed:", error);
-          setTimeout(() => setLocationStr("Enable GPS"), 0);
+          setLocationStr("Enable GPS");
         });
     } else {
-      setTimeout(() => setLocationStr("Enable GPS"), 0);
+      setLocationStr("Enable GPS");
     }
 
     return () => {
       clearInterval(intervalId);
-      clearTimeout(mountHandle);
       if (watchId !== null && navigator.geolocation) {
         navigator.geolocation.clearWatch(watchId);
       }

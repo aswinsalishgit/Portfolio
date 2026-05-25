@@ -44,7 +44,7 @@ export const projects: Project[] = [
   },
   {
     id: "03",
-    slug: "thermal-braking",
+    slug: "buffer",
     title: "Buffer Game",
     category: "Buffer",
     image: "/buffer.png",

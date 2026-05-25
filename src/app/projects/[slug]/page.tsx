@@ -84,7 +84,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                  </p>
                </div>
 
-                {project.slug === "thermal-braking" ? (
+                {project.slug === "buffer" ? (
                   <div className="flex flex-col gap-12 mt-8">
                     {/* Game Mechanics block */}
                     <div className="flex flex-col gap-6">
@@ -155,19 +155,83 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                     </div>
 
                     {/* Installation section */}
-                    <div className="flex flex-col gap-6 bg-white/5 p-8 border border-white/10 mt-8">
-                      <h3 className="font-header text-2xl uppercase tracking-tighter text-white">Installation</h3>
-                      <p className="font-mono text-sm text-foreground/60 leading-relaxed">
-                        {"Buffer is a fully standalone, offline application requiring zero system permissions."}
-                      </p>
-                      <ol className="flex flex-col gap-3 font-mono text-xs pl-4 list-decimal">
-                        <li>{"Navigate to the Releases tab of this repository."}</li>
-                        <li>{"Download the latest Buffer.apk."}</li>
-                        <li>{"Open the file on your Android device (ensure \"Install from Unknown Sources\" is enabled)."}</li>
-                      </ol>
-                      <p className="font-mono text-xs text-foreground/40 mt-4 leading-relaxed italic border-t border-white/5 pt-4">
-                        {"Note on Installation: Because this app is distributed directly via GitHub and not the Google Play Store, Android's Play Protect will likely flag it as an \"Unrecognized Developer.\" This is a standard OS-level security prompt for sideloaded applications. You can safely bypass this by clicking \"More Details\" -> \"Install Anyway.\""}
-                      </p>
+                    <div className="flex flex-col gap-8 bg-white/[0.02] p-8 border-brutal mt-12 relative overflow-hidden">
+                      <div className="flex flex-col gap-2 border-b border-white/10 pb-6">
+                        <div className="flex items-center gap-3">
+                          <span className="w-2 h-2 bg-accent animate-pulse" />
+                          <span className="font-mono text-[10px] text-accent uppercase tracking-widest">Pipeline // Deploy</span>
+                        </div>
+                        <h3 className="font-header text-3xl uppercase tracking-tighter text-white">Installation Protocols</h3>
+                        <p className="font-mono text-xs text-foreground/60 leading-relaxed max-w-2xl">
+                          {"Buffer is a zero-dependency, fully offline game. Choose one of the verified installation pipelines below to deploy the package onto your device."}
+                        </p>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {/* Method 01: Direct Sideload */}
+                        <div className="border-brutal bg-white/5 p-6 flex flex-col justify-between gap-8">
+                          <div className="flex flex-col gap-4">
+                            <span className="font-mono text-[10px] text-accent uppercase tracking-wider">[Method 01 // Direct Sideload]</span>
+                            <h4 className="font-header text-xl text-white">Direct Installation</h4>
+                            <p className="font-mono text-xs text-foreground/50 leading-relaxed">
+                              {"Instantly retrieve and deploy the pre-compiled, production-ready package on your Android device."}
+                            </p>
+                            <ul className="flex flex-col gap-2.5 font-mono text-[11px] text-foreground/75 pl-4 list-decimal">
+                              <li>{"Enable \"Install from Unknown Sources\" in your Android system settings."}</li>
+                              <li>{"Click the download action below to retrieve the direct verified APK package."}</li>
+                              <li>{"Open the downloaded file and run the Android package installer."}</li>
+                            </ul>
+                          </div>
+                          
+                          <a 
+                            href="/Buffer.apk"
+                            download="Buffer.apk"
+                            className="group flex items-center justify-center gap-3 border-brutal p-4 bg-white text-black hover:bg-accent hover:text-black font-header tracking-wider text-xs transition-all w-full text-center"
+                          >
+                            <div className="w-2 h-2 bg-black transition-colors" />
+                            {"DOWNLOAD FOR ANDROID (v1.0.0)"}
+                          </a>
+                        </div>
+
+                        {/* Method 02: GitHub Compile/Release */}
+                        <div className="border-brutal bg-white/5 p-6 flex flex-col justify-between gap-8">
+                          <div className="flex flex-col gap-4">
+                            <span className="font-mono text-[10px] text-foreground/45 uppercase tracking-wider">[Method 02 // Github Compile]</span>
+                            <h4 className="font-header text-xl text-white">Installation from GitHub</h4>
+                            <p className="font-mono text-xs text-foreground/50 leading-relaxed">
+                              {"Audit the open-source Kotlin codebase, download public tags, or build the application from source."}
+                            </p>
+                            <ul className="flex flex-col gap-2.5 font-mono text-[11px] text-foreground/75 pl-4 list-decimal">
+                              <li>{"Access the official repository hosted on GitHub."}</li>
+                              <li>{"Navigate to the Releases section to verify MD5/SHA256 checksums."}</li>
+                              <li>{"Clone the repository to compile the source code via Gradle, or fetch pre-built assets."}</li>
+                            </ul>
+                          </div>
+
+                          <a 
+                            href="https://github.com/aswinsalishgit/Buffer/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group flex items-center justify-center gap-3 border-brutal p-4 bg-white/5 text-white hover:bg-white hover:text-black font-header tracking-wider text-xs transition-all w-full text-center"
+                          >
+                            <div className="w-2 h-2 bg-white/20 group-hover:bg-black transition-colors" />
+                            {"VIEW ON GITHUB"}
+                          </a>
+                        </div>
+                      </div>
+
+                      {/* Warnings Callout */}
+                      <div className="flex gap-4 border-t border-white/5 pt-6 mt-2">
+                        <div className="flex-shrink-0 w-8 h-8 border border-accent/20 flex items-center justify-center font-mono text-accent text-xs bg-accent/5">
+                          {"!"}
+                        </div>
+                        <div className="flex flex-col gap-1">
+                          <span className="font-mono text-[10px] text-accent uppercase tracking-wider">Play Protect Warning</span>
+                          <p className="font-mono text-[11px] text-foreground/45 leading-relaxed">
+                            {"Because this package is distributed directly and not signed through the Google Play Store, Android's Play Protect security layer may display a prompt flagging it as an \"Unrecognized Developer.\" Sideloading is completely secure—simply click \"More Details\" followed by \"Install Anyway\" to complete the setup."}
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 ) : (
