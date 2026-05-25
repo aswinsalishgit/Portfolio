@@ -13,7 +13,7 @@ export default function Home() {
         <ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-3 border-brutal group">
             {[
-              { label: "01", title: "Recruit", desc: "DEVELOPING ROBUST FULL-STACK WEB SOLUTIONS." },
+              { label: "01", title: "Recruit", desc: "EVALUATE TECHNICAL BACKGROUND AND SECURE RESUME." },
               { label: "02", title: "Endorse", desc: "APPEND A PUBLIC PEER REVIEW OR VERIFIED RECOMMENDATION." },
               { label: "03", title: "Subscribe", desc: "RECEIVE REAL-TIME UPDATES ON PROJECT BUILDS AND DEPLOYMENTS." },
             ].map((item, i) => (
