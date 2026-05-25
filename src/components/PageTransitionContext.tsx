@@ -11,7 +11,7 @@ const navLinks = [
   { name: "Contact", href: "/contact" },
   { name: "Recruit", href: "/recruit" },
   { name: "Endorse", href: "/endorse" },
-  { name: "Subscribe", href: "/subscribe" },
+  { name: "Connect", href: "/connect" },
 ];
 
 const PageTransitionContext = createContext<{
