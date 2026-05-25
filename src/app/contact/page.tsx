@@ -152,7 +152,7 @@ export default function ContactPage() {
         <div className="mt-20 border-t border-white/10 pt-8 flex justify-between items-center font-mono text-[10px] text-foreground/20 uppercase">
           <span>Security Protocol: Encrypted</span>
           <span>Buffer Status: Ready</span>
-          <span className="hidden md:block">Time: {mounted ? timeStr : "--:--:--"}</span>
+          <span className="hidden md:block">Time: {mounted && timeStr ? timeStr : ""}</span>
         </div>
       </div>
     </section>
