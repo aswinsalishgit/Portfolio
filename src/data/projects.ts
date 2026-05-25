@@ -13,8 +13,8 @@ export const projects: Project[] = [
   {
     id: "01",
     slug: "aerodynamics-prototype",
-    title: "Aerodynamics Prototype",
-    category: "Mantis Shrimp Variant 1",
+    title: "Mantis Shrimp Variant 1",
+    category: "MSV1",
     image: "/project-1.jpeg",
     desc: "A high-fidelity exploration into fluid dynamics and structural integrity for next-generation motorsport vehicles.",
     fullDesc: "This project explores the intersection of aesthetic rawism and pure performance. By utilizing computational fluid dynamics (CFD), we developed a body form that minimizes drag while maintaining a brutalist visual language. The prototype features exposed carbon structures and integrated cooling ducts that function as both performance and aesthetic elements.",
