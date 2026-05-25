@@ -19,9 +19,6 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         <div className="flex flex-col gap-12">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end border-b border-white/10 pb-12 gap-8">
             <div className="flex flex-col gap-4">
-              <span className="font-mono text-accent text-xs tracking-[0.3em] uppercase">
-                [PROJECT_ID: {project.id}]
-              </span>
               <h1 className="text-5xl md:text-9xl font-header leading-[0.8] uppercase tracking-tighter">
                 {project.title.split(' ')[0]} <br /> 
                 <span className="text-accent underline decoration-1 underline-offset-[12px]">
