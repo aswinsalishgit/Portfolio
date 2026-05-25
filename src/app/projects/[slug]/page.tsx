@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import PageReveal from "@/components/PageReveal";
 import { notFound } from "next/navigation";
+import ImageGallery from "@/components/ImageGallery";
 
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -65,14 +66,31 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                  </ul>
                </div>
 
-               <div className="flex flex-col gap-4">
-                 <h3 className="font-header text-xl uppercase tracking-widest text-white border-b border-white/10 pb-4">
-                   Category
-                 </h3>
-                 <span className="font-mono text-xs text-accent uppercase tracking-[0.2em]">
-                   {project.category}
-                 </span>
-               </div>
+                <div className="flex flex-col gap-4">
+                  <h3 className="font-header text-xl uppercase tracking-widest text-white border-b border-white/10 pb-4">
+                    Category
+                  </h3>
+                  <span className="font-mono text-xs text-accent uppercase tracking-[0.2em]">
+                    {project.category}
+                  </span>
+                </div>
+
+                {project.slug === "buffer" && (
+                  <div className="flex flex-col gap-4 mt-2">
+                    <h3 className="font-header text-xl uppercase tracking-widest text-white border-b border-white/10 pb-4">
+                      Images
+                    </h3>
+                    <ImageGallery 
+                      images={[
+                        "/bufferp1.jpg",
+                        "/bufferp2.jpg",
+                        "/bufferp3.jpg",
+                        "/bufferp4.jpg",
+                        "/bufferp5.jpg"
+                      ]} 
+                    />
+                  </div>
+                )}
             </div>
 
             {/* Right side: Full Description */}
