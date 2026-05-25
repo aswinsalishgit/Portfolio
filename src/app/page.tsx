@@ -15,10 +15,10 @@ export default function Home() {
             {[
               { label: "01", title: "Recruit", desc: "DEVELOPING ROBUST FULL-STACK WEB SOLUTIONS." },
               { label: "02", title: "Endorse", desc: "CERTIFIED COMPETENCIES IN MODERN DEVELOPMENT STACKS." },
-              { label: "03", title: "Connect", desc: "ESTABLISH A DIRECT LINE FOR ENGINEERING OPPORTUNITIES." },
+              { label: "03", title: "Subscribe", desc: "ESTABLISH A DIRECT LINE FOR ENGINEERING OPPORTUNITIES." },
             ].map((item, i) => (
               <Link 
-                href={`/${item.title.toLowerCase()}`}
+                href={item.title === "Subscribe" ? "/connect" : `/${item.title.toLowerCase()}`}
                 key={i} 
                 className={`p-8 border-brutal hover:bg-accent hover:text-black transition-all cursor-pointer group/item ${
                   i === 1 ? "md:border-x-brutal" : ""
