@@ -24,13 +24,13 @@ const ibmMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aswinsalish.me"),
-  title: "ASWIN SALISH | CREATIVE DEVELOPER",
+  title: "ASWIN SALISH | FULLSTACK DEVELOPER",
   description: "High-performance digital architectures where motorsport engineering meets brutalist minimalism.",
   icons: {
     icon: "/icon.png",
   },
   openGraph: {
-    title: "ASWIN SALISH | CREATIVE DEVELOPER",
+    title: "ASWIN SALISH | FULLSTACK DEVELOPER",
     description: "High-performance digital architectures where motorsport engineering meets brutalist minimalism.",
     url: "https://aswinsalish.me",
     siteName: "Aswin Salish Portfolio",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ASWIN SALISH | CREATIVE DEVELOPER",
+    title: "ASWIN SALISH | FULLSTACK DEVELOPER",
     description: "High-performance digital architectures where motorsport engineering meets brutalist minimalism.",
     images: ["/og-image.png"],
   },
