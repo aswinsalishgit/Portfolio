@@ -37,7 +37,7 @@ export default function Home() {
         <ScrollReveal className="mt-40">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-white/10 pt-20">
             <div className="flex flex-col gap-2">
-              <span className="font-mono text-accent text-[10px] tracking-[0.3em] uppercase">[ARCHITECTURAL_FOCUS]</span>
+              <span className="font-mono text-accent text-[10px] tracking-[0.3em] uppercase">ARCHITECTURAL FOCUS</span>
               <h2 className="text-4xl md:text-6xl font-header leading-none uppercase tracking-tighter">Executive <br /> Summary.</h2>
             </div>
             <div className="flex flex-col gap-6">
