@@ -188,7 +188,13 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                             download="Buffer.apk"
                             className="group flex items-center justify-center gap-3 border-brutal p-4 bg-white text-black hover:bg-accent hover:text-black font-header tracking-wider text-xs transition-all w-full text-center"
                           >
-                            <div className="w-2 h-2 bg-black transition-colors" />
+                            <svg 
+                              viewBox="0 0 24 24" 
+                              fill="currentColor" 
+                              className="w-4 h-4 transition-transform duration-300 group-hover:scale-110"
+                            >
+                              <path d="M17.523 15.3414c-.5511 0-1-.4489-1-1s.4489-1 1-1 1 .4489 1 1-.4489 1-1 1zm-11.046 0c-.5511 0-1-.4489-1-1s.4489-1 1-1 1 .4489 1 1-.4489 1-1 1zm11.546-5.8827l1.93-3.3427a.498.498 0 00-.181-.682.497.497 0 00-.68.181l-1.956 3.388C15.86 8.358 13.996 7.962 12 7.962c-1.997 0-3.861.396-5.132 1.026l-1.956-3.388a.496.496 0 00-.68-.181.498.498 0 00-.181.682l1.93 3.3427C2.793 11.2334.619 14.2804.5 17.8484h23c-.119-3.568-2.293-6.615-5.5-7.8497z" />
+                            </svg>
                             {"DOWNLOAD FOR ANDROID (v1.0.0)"}
                           </a>
                         </div>
@@ -214,8 +220,19 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                             rel="noopener noreferrer"
                             className="group flex items-center justify-center gap-3 border-brutal p-4 bg-white/5 text-white hover:bg-white hover:text-black font-header tracking-wider text-xs transition-all w-full text-center"
                           >
-                            <div className="w-2 h-2 bg-white/20 group-hover:bg-black transition-colors" />
-                            {"VIEW ON GITHUB"}
+                            <svg 
+                              viewBox="0 0 24 24" 
+                              fill="none" 
+                              stroke="currentColor" 
+                              strokeWidth="2" 
+                              strokeLinecap="round" 
+                              strokeLinejoin="round" 
+                              className="w-4 h-4 transition-transform duration-300 group-hover:scale-110"
+                            >
+                              <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                              <path d="M9 18c-4.51 2-5-2-7-2" />
+                            </svg>
+                            {"DOWNLOAD FROM GITHUB"}
                           </a>
                         </div>
                       </div>
