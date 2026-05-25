@@ -24,17 +24,17 @@ export default function Footer() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
         <div>
           <h2 className="text-4xl md:text-6xl font-header mb-8 leading-none">
-            Let&apos;s build <br /> <span className="text-accent">something raw.</span>
+            Let&apos;s build <br /> <span className="text-accent">something NEW.</span>
           </h2>
           <p className="font-mono text-sm max-w-sm text-foreground/60 mb-8">
-            Specializing in high-performance digital experiences where engineering meets extreme minimalism.
+            Let&apos;s bridge the gap between intelligent systems and seamless user interfaces.
           </p>
           <Link 
             href="/contact" 
             onClick={handleStartProjectClick}
             className="inline-block border-brutal px-8 py-4 font-header tracking-widest hover:bg-white hover:text-black transition-all"
           >
-            START PROJECT
+            OPEN INQUIRY
           </Link>
         </div>
         
