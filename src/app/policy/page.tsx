@@ -20,7 +20,7 @@ export default function PrivacyPolicy() {
                 <div className="md:col-span-3 space-y-4">
                   <p className="font-mono text-sm leading-relaxed text-foreground/70">
                     This Privacy Policy explains how I handle your data when you interact with my portfolio website. 
-                    As a creative developer, I value transparency and data sovereignty.
+                    As a fullstack developer, I value transparency and data sovereignty.
                   </p>
                 </div>
               </div>
