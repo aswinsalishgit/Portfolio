@@ -37,15 +37,15 @@ export default function Home() {
         <ScrollReveal className="mt-40">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-white/10 pt-20">
             <div className="flex flex-col gap-2">
-              <span className="font-mono text-accent text-[10px] tracking-[0.3em] uppercase">[ARCHITECTURAL FOCUS]</span>
-              <h2 className="text-4xl md:text-6xl font-header leading-none uppercase tracking-tighter">EXECUTIVE <br /> SUMMARY.</h2>
+              <span className="font-mono text-accent text-[10px] tracking-[0.3em] uppercase">[ARCHITECTURAL_FOCUS]</span>
+              <h2 className="text-4xl md:text-6xl font-header leading-none uppercase tracking-tighter">Executive <br /> Summary.</h2>
             </div>
             <div className="flex flex-col gap-6">
               <p className="font-mono text-sm md:text-base leading-relaxed text-foreground/60 uppercase">
                 A COMPREHENSIVE ARCHIVE OF FULL-STACK DEVELOPMENT AND SYSTEM ARCHITECTURE. THIS PLATFORM SERVES AS A LIVE BUILD LOG OF MY ENGINEERING WORK, SHOWCASING A PORTFOLIO FOCUSED ON ROBUST BACKEND LOGIC, SECURE DATABASE SCHEMAS, AND HIGH-PERFORMANCE WEB APPLICATIONS. MY EXPERTISE SPANS FROM COMPLEX API ROUTING TO STREAMLINED FRONTEND EXPERIENCES, ENSURING EVERY LINE OF CODE IS OPTIMIZED FOR EFFICIENCY AND SCALABILITY.
               </p>
               <p className="font-mono text-sm md:text-base leading-relaxed text-foreground/60 uppercase border-l border-accent pl-6">
-                Every line of code is optimized for raw performance and aesthetic precision. This is not just a portfolio; it is a live system feed of technical excellence and creative exploration.
+                EVERY COMPONENT IS ENGINEERED FOR HIGH AVAILABILITY, SECURITY, AND PRECISION. THIS IS NOT A STATIC ARCHIVE; IT IS AN ACTIVE DEMONSTRATION OF APPLIED LOGIC, HIGHLIGHTING MY CAPACITY TO BUILD, SECURE, AND SCALE MODERN DIGITAL ARCHITECTURES.
               </p>
             </div>
           </div>
