@@ -47,7 +47,7 @@ export function useLiveLocationAndTime(defaultLocation: string = "") {
               );
             } else {
               // 'prompt' or 'denied' - DO NOT call geolocation to avoid prompting the user
-              setLocationStr("Enable GPS");
+              setTimeout(() => setLocationStr("Enable GPS"), 0);
             }
           };
 
@@ -56,10 +56,10 @@ export function useLiveLocationAndTime(defaultLocation: string = "") {
         })
         .catch((error) => {
           console.error("Permissions query failed:", error);
-          setLocationStr("Enable GPS");
+          setTimeout(() => setLocationStr("Enable GPS"), 0);
         });
     } else {
-      setLocationStr("Enable GPS");
+      setTimeout(() => setLocationStr("Enable GPS"), 0);
     }
 
     return () => {
