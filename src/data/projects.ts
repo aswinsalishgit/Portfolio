@@ -48,14 +48,15 @@ export const projects: Project[] = [
     title: "Buffer Game",
     category: "Buffer",
     image: "/buffer.png",
-    desc: "Visualizing extreme kinetic energy conversion through heat mapping and mechanical stress simulations.",
-    fullDesc: "Thermal Braking is a visualization study into the physics of deceleration. By mapping the heat generated during extreme braking events, we created a visual language that represents energy dissipation. This project served as both a technical audit for brake cooling systems and a piece of generative digital art.",
+    desc: "A 1v1 psychological deduction game disguised as a mobile app.",
+    fullDesc: "Buffer is a high-speed, simultaneous-reveal logic game built natively for Android. It takes the core concept of Rock-Paper-Scissors and completely shatters it by introducing a 2-Round Memory Cooldown and a Heuristic AI Taunt Engine. You are not playing against a random number generator; you are playing against an algorithm that tracks your habits, analyzes your frequency, and actively trash-talks your blunders. The application is built entirely in Jetpack Compose, featuring state-driven rendering and a zero-latency tactical UI.",
     technicalSpecs: [
-      "Peak Temp: 950°C",
-      "Simulation: Kinetic Energy Transfer",
-      "Visualization: Infrared Mapping",
-      "Data Rate: 10k Samples/Sec",
-      "Rendering: Real-time GPU Path Tracing"
+      "Architecture: Kotlin Jetpack Compose",
+      "AI Engine: 3-Tier Heuristic Matrix",
+      "State Management: StateFlow + ViewModel",
+      "Persistence: AndroidX DataStore Preferences",
+      "Start Latency: AndroidX Core Splash API (0ms)",
+      "UI Theme: #1A1D24 with #F58A27 Accents"
     ]
   },
 ];
