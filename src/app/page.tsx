@@ -13,9 +13,9 @@ export default function Home() {
         <ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-3 border-brutal group">
             {[
-              { label: "01", title: "Recruit", desc: "Building the next-gen collective." },
-              { label: "02", title: "Endorse", desc: "Verified technical excellence." },
-              { label: "03", title: "Subscribe", desc: "Access the live system feed." },
+              { label: "01", title: "Recruit", desc: "DEVELOPING ROBUST FULL-STACK WEB SOLUTIONS." },
+              { label: "02", title: "Endorse", desc: "CERTIFIED COMPETENCIES IN MODERN DEVELOPMENT STACKS." },
+              { label: "03", title: "Subscribe", desc: "ESTABLISH A DIRECT LINE FOR ENGINEERING OPPORTUNITIES." },
             ].map((item, i) => (
               <Link 
                 href={`/${item.title.toLowerCase()}`}
