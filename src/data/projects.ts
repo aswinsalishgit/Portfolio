@@ -31,7 +31,7 @@ export const projects: Project[] = [
     slug: "cockpit-interface",
     title: "MM8 App",
     category: "MM8",
-    image: "/project-2.jpeg",
+    image: "/mm8.png",
     desc: "Redefining the relationship between driver and machine through high-contrast, zero-latency digital instrumentation.",
     fullDesc: "The Cockpit Interface project focused on human-machine interaction in high-stress environments. We designed a custom operating system that prioritizes essential telemetry using a high-contrast monochromatic palette. The interface responds with zero perceived latency, ensuring the driver is always in sync with the vehicle's internal systems.",
     technicalSpecs: [
@@ -47,7 +47,7 @@ export const projects: Project[] = [
     slug: "thermal-braking",
     title: "Buffer Game",
     category: "Buffer",
-    image: "/project-3.jpeg",
+    image: "/buffer.jpg",
     desc: "Visualizing extreme kinetic energy conversion through heat mapping and mechanical stress simulations.",
     fullDesc: "Thermal Braking is a visualization study into the physics of deceleration. By mapping the heat generated during extreme braking events, we created a visual language that represents energy dissipation. This project served as both a technical audit for brake cooling systems and a piece of generative digital art.",
     technicalSpecs: [
