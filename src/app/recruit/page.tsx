@@ -12,7 +12,7 @@ export default function RecruitPage() {
 
   const experience = [
     {
-      role: "Creative Developer",
+      role: "Fullstack Developer",
       company: "Freelance / Independent",
       period: "2023 - Present",
       description: "Developing high-performance digital experiences for clients globally, focusing on brutalist aesthetics and smooth interactions."
