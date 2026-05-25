@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import PageReveal from "@/components/PageReveal";
 import { Mail, Bell, CheckCircle2, ShieldCheck, Zap, Send } from "lucide-react";
 
-export default function SubscribePage() {
+export default function ConnectPage() {
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
