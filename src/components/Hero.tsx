@@ -141,16 +141,6 @@ export default function Hero() {
         </div>
         <span className="font-mono text-[8px] uppercase tracking-widest text-accent/40">Scroll to Explore</span>
       </div>
-
-      <style jsx>{`
-        @keyframes scroll-line {
-          0% { transform: translateY(-100%); }
-          100% { transform: translateY(100%); }
-        }
-        .animate-scroll-line {
-          animation: scroll-line 2s infinite linear;
-        }
-      `}</style>
     </section>
   );
 }
