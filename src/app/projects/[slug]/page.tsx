@@ -76,22 +76,22 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 </div>
 
                 {project.slug === "buffer" && (
-                  <div className="flex flex-col gap-4 mt-2">
+                  <div className="flex flex-col gap-4 border-t border-white/10 pt-8 mt-4">
                     <h3 className="font-header text-xl uppercase tracking-widest text-white border-b border-white/10 pb-4">
-                      Images
+                      Visual Telemetry
                     </h3>
                     <ImageGallery 
                       images={[
-                        "/bufferp1.jpg",
-                        "/bufferp2.jpg",
-                        "/bufferp3.jpg",
-                        "/bufferp4.jpg",
-                        "/bufferp5.jpg"
+                        "/buffer1.jpg",
+                        "/buffer2.jpg",
+                        "/buffer3.jpg",
+                        "/buffer4.jpg",
+                        "/buffer5.jpg"
                       ]} 
                     />
                   </div>
                 )}
-            </div>
+             </div>
 
             {/* Right side: Full Description */}
             <div className="lg:col-span-8 flex flex-col gap-12">
