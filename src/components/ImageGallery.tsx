@@ -13,7 +13,7 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
   const [scale, setScale] = useState(1);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
-  
+
   const dragStart = useRef({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -115,13 +115,13 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
       {/* 5-Image Brutalist Collage Grid */}
       <div className="grid grid-cols-6 gap-2 w-full">
         {/* Main Large Image */}
-        <div 
+        <div
           onClick={() => openLightbox(0)}
           className="col-span-6 aspect-video relative border-brutal overflow-hidden group cursor-pointer bg-black/40"
         >
-          <Image 
-            src={images[0]} 
-            alt="Telemetry Screenshot 1" 
+          <Image
+            src={images[0]}
+            alt="Telemetry Screenshot 1"
             fill
             sizes="(max-width: 768px) 100vw, 400px"
             className="object-cover transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0 grayscale opacity-70 group-hover:opacity-100"
@@ -133,13 +133,13 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
         </div>
 
         {/* 2x2 Grid for Remaining 4 Images */}
-        <div 
+        <div
           onClick={() => openLightbox(1)}
           className="col-span-3 aspect-square relative border-brutal overflow-hidden group cursor-pointer bg-black/40"
         >
-          <Image 
-            src={images[1]} 
-            alt="Telemetry Screenshot 2" 
+          <Image
+            src={images[1]}
+            alt="Telemetry Screenshot 2"
             fill
             sizes="(max-width: 768px) 50vw, 200px"
             className="object-cover transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0 grayscale opacity-70 group-hover:opacity-100"
@@ -149,13 +149,13 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
           </span>
         </div>
 
-        <div 
+        <div
           onClick={() => openLightbox(2)}
           className="col-span-3 aspect-square relative border-brutal overflow-hidden group cursor-pointer bg-black/40"
         >
-          <Image 
-            src={images[2]} 
-            alt="Telemetry Screenshot 3" 
+          <Image
+            src={images[2]}
+            alt="Telemetry Screenshot 3"
             fill
             sizes="(max-width: 768px) 50vw, 200px"
             className="object-cover transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0 grayscale opacity-70 group-hover:opacity-100"
@@ -165,13 +165,13 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
           </span>
         </div>
 
-        <div 
+        <div
           onClick={() => openLightbox(3)}
           className="col-span-3 aspect-square relative border-brutal overflow-hidden group cursor-pointer bg-black/40"
         >
-          <Image 
-            src={images[3]} 
-            alt="Telemetry Screenshot 4" 
+          <Image
+            src={images[3]}
+            alt="Telemetry Screenshot 4"
             fill
             sizes="(max-width: 768px) 50vw, 200px"
             className="object-cover transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0 grayscale opacity-70 group-hover:opacity-100"
@@ -181,13 +181,13 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
           </span>
         </div>
 
-        <div 
+        <div
           onClick={() => openLightbox(4)}
           className="col-span-3 aspect-square relative border-brutal overflow-hidden group cursor-pointer bg-black/40"
         >
-          <Image 
-            src={images[4]} 
-            alt="Telemetry Screenshot 5" 
+          <Image
+            src={images[4]}
+            alt="Telemetry Screenshot 5"
             fill
             sizes="(max-width: 768px) 50vw, 200px"
             className="object-cover transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0 grayscale opacity-70 group-hover:opacity-100"
@@ -201,14 +201,14 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
       {/* Dynamic Lightbox View */}
       {isOpen && (
         <div className="fixed inset-0 z-50 bg-black/95 flex flex-col justify-between p-6 select-none animate-in fade-in duration-200">
-          
+
           {/* Top Panel: Title and Close button */}
           <div className="flex justify-between items-center w-full z-50">
             <div className="flex flex-col gap-1">
               <span className="font-mono text-[9px] text-accent uppercase tracking-widest">Buffer // Telemetry Stream</span>
               <span className="font-mono text-xs text-white uppercase">{"Screenshot 0" + (activeIdx + 1) + " of 0" + images.length}</span>
             </div>
-            <button 
+            <button
               onClick={() => setIsOpen(false)}
               className="font-mono text-xs text-foreground/50 hover:text-accent border border-white/10 hover:border-accent px-4 py-2 bg-black/40 transition-all cursor-pointer"
             >
@@ -219,7 +219,7 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
           {/* Center Viewport */}
           <div className="relative flex-grow flex items-center justify-center overflow-hidden my-4">
             {/* Left navigation arrow */}
-            <button 
+            <button
               onClick={prevImage}
               className="absolute left-4 z-40 w-12 h-12 border border-white/10 hover:border-accent hover:bg-accent hover:text-black flex items-center justify-center font-mono text-white transition-all bg-black/30"
             >
@@ -227,7 +227,7 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
             </button>
 
             {/* Zoomable Image Container */}
-            <div 
+            <div
               ref={containerRef}
               onMouseDown={handleMouseDown}
               onMouseMove={handleMouseMove}
@@ -235,15 +235,15 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
               onMouseLeave={handleMouseUp}
               className={`relative max-w-[85vw] max-h-[70vh] aspect-[16/10] md:aspect-auto w-full h-full flex items-center justify-center overflow-hidden ${scale > 1 ? "cursor-grab active:cursor-grabbing" : "cursor-default"}`}
             >
-              <div 
+              <div
                 style={{
                   transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
                   transition: isDragging ? "none" : "transform 0.15s ease-out, translate 0.15s ease-out",
                 }}
                 className="relative w-full h-full max-w-[85vw] max-h-[70vh] flex items-center justify-center pointer-events-none select-none"
               >
-                <Image 
-                  src={images[activeIdx]} 
+                <Image
+                  src={images[activeIdx]}
                   alt={`Telemetry Full Screenshot ${activeIdx + 1}`}
                   fill
                   priority
@@ -253,7 +253,7 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
             </div>
 
             {/* Right navigation arrow */}
-            <button 
+            <button
               onClick={nextImage}
               className="absolute right-4 z-40 w-12 h-12 border border-white/10 hover:border-accent hover:bg-accent hover:text-black flex items-center justify-center font-mono text-white transition-all bg-black/30"
             >
@@ -267,16 +267,16 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
               <span>{"Scale: " + scale.toFixed(2) + "x"}</span>
               {scale > 1 && <span>{"[ Drag mouse to pan zoomed image ]"}</span>}
             </div>
-            
+
             <div className="flex gap-2.5 overflow-x-auto max-w-full py-1">
               {images.map((img, i) => (
-                <div 
+                <div
                   key={i}
                   onClick={() => setActiveIdx(i)}
                   className={`relative w-16 h-10 border cursor-pointer overflow-hidden transition-all ${i === activeIdx ? "border-accent scale-105" : "border-white/10 hover:border-white/40 opacity-50 hover:opacity-80"}`}
                 >
-                  <Image 
-                    src={img} 
+                  <Image
+                    src={img}
                     alt={`Thumbnail ${i + 1}`}
                     fill
                     className="object-cover"

@@ -66,32 +66,32 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                  </ul>
                </div>
 
-                <div className="flex flex-col gap-4">
-                  <h3 className="font-header text-xl uppercase tracking-widest text-white border-b border-white/10 pb-4">
-                    Category
-                  </h3>
-                  <span className="font-mono text-xs text-accent uppercase tracking-[0.2em]">
-                    {project.category}
-                  </span>
-                </div>
+               <div className="flex flex-col gap-4">
+                 <h3 className="font-header text-xl uppercase tracking-widest text-white border-b border-white/10 pb-4">
+                   Category
+                 </h3>
+                 <span className="font-mono text-xs text-accent uppercase tracking-[0.2em]">
+                   {project.category}
+                 </span>
+               </div>
 
-                {project.slug === "buffer" && (
-                  <div className="flex flex-col gap-4 border-t border-white/10 pt-8 mt-4">
-                    <h3 className="font-header text-xl uppercase tracking-widest text-white border-b border-white/10 pb-4">
-                      Visual Telemetry
-                    </h3>
-                    <ImageGallery 
-                      images={[
-                        "/buffer1.jpg",
-                        "/buffer2.jpg",
-                        "/buffer3.jpg",
-                        "/buffer4.jpg",
-                        "/buffer5.jpg"
-                      ]} 
-                    />
-                  </div>
-                )}
-             </div>
+               {project.slug === "buffer" && (
+                 <div className="flex flex-col gap-4 mt-2">
+                   <h3 className="font-header text-xl uppercase tracking-widest text-white border-b border-white/10 pb-4">
+                     Telemetry Stream
+                   </h3>
+                   <ImageGallery 
+                     images={[
+                       "/buffer1.jpg",
+                       "/buffer2.jpg",
+                       "/buffer3.jpg",
+                       "/buffer4.jpg",
+                       "/buffer5.jpg"
+                     ]} 
+                   />
+                 </div>
+               )}
+            </div>
 
             {/* Right side: Full Description */}
             <div className="lg:col-span-8 flex flex-col gap-12">
