@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import PageReveal from "@/components/PageReveal";
 import { notFound } from "next/navigation";
-import ImageGallery from "@/components/ImageGallery";
+import LightboxGallery from "@/components/LightboxGallery";
 
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -75,21 +75,15 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                  </span>
                </div>
 
+               {/* Images & Lightbox Gallery Section for Buffer */}
                {project.slug === "buffer" && (
-                 <div className="flex flex-col gap-4 mt-2">
-                   <h3 className="font-header text-xl uppercase tracking-widest text-white border-b border-white/10 pb-4">
-                     Telemetry Stream
-                   </h3>
-                   <ImageGallery 
-                     images={[
-                       "/buffer1.jpg",
-                       "/buffer2.jpg",
-                       "/buffer3.jpg",
-                       "/buffer4.jpg",
-                       "/buffer5.jpg"
-                     ]} 
-                   />
-                 </div>
+                 <LightboxGallery images={[
+                   "/buffer1.jpg",
+                   "/buffer2.jpg",
+                   "/buffer3.jpg",
+                   "/buffer4.jpg",
+                   "/buffer5.jpg"
+                 ]} />
                )}
             </div>
 
