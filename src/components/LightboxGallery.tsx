@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 
 interface LightboxGalleryProps {
@@ -77,7 +78,7 @@ export default function LightboxGallery({ images }: LightboxGalleryProps) {
       </div>
 
       {/* Lightbox Viewer */}
-      {isOpen && (
+      {isOpen && typeof document !== "undefined" && createPortal(
         <div 
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md"
           onClick={closeLightbox}
@@ -127,7 +128,8 @@ export default function LightboxGallery({ images }: LightboxGalleryProps) {
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 font-mono text-xs text-white/50 tracking-widest bg-black/50 px-4 py-2 border border-white/10">
             {currentIndex + 1} / {images.length}
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );
