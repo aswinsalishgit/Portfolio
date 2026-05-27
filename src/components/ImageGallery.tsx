@@ -17,7 +17,19 @@ const imageNames = [
 
 export default function ImageGallery({ images }: ImageGalleryProps) {
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
-  const [isZoomed, setIsZoomed] = useState(false);
+  const [zoomScale, setZoomScale] = useState(1.0);
+
+  // Lock body scrolling when lightbox is active
+  useEffect(() => {
+    if (activeIdx !== null) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [activeIdx]);
 
   // Close lightbox on Escape, navigate with Arrow keys
   useEffect(() => {
@@ -26,12 +38,12 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setActiveIdx(null);
-        setIsZoomed(false);
+        setZoomScale(1.0);
       } else if (e.key === "ArrowRight") {
-        setIsZoomed(false);
+        setZoomScale(1.0);
         setActiveIdx((prev) => (prev !== null && prev < images.length - 1 ? prev + 1 : 0));
       } else if (e.key === "ArrowLeft") {
-        setIsZoomed(false);
+        setZoomScale(1.0);
         setActiveIdx((prev) => (prev !== null && prev > 0 ? prev - 1 : images.length - 1));
       }
     };
@@ -47,7 +59,7 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
         {/* Main large widescreen screenshot */}
         <div 
           onClick={() => {
-            setIsZoomed(false);
+            setZoomScale(1.0);
             setActiveIdx(0);
           }}
           className="col-span-2 aspect-[16/10] relative border-brutal overflow-hidden group cursor-pointer bg-white/5"
@@ -72,7 +84,7 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
           <div 
             key={i}
             onClick={() => {
-              setIsZoomed(false);
+              setZoomScale(1.0);
               setActiveIdx(i + 1);
             }}
             className="col-span-1 aspect-[9/16] relative border-brutal overflow-hidden group cursor-pointer bg-white/5"
@@ -99,7 +111,7 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
         <div 
           onClick={() => {
             setActiveIdx(null);
-            setIsZoomed(false);
+            setZoomScale(1.0);
           }}
           className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col justify-between p-4 md:p-8 animate-in fade-in duration-300 select-none"
         >
@@ -116,7 +128,7 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
             <button 
               onClick={() => {
                 setActiveIdx(null);
-                setIsZoomed(false);
+                setZoomScale(1.0);
               }}
               className="group flex items-center gap-2 border-brutal px-4 py-2 bg-white/5 hover:bg-white text-white hover:text-black font-header tracking-wider text-xs transition-all"
             >
@@ -134,7 +146,7 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
             <button 
               onClick={(e) => {
                 e.stopPropagation();
-                setIsZoomed(false);
+                setZoomScale(1.0);
                 setActiveIdx((prev) => (prev !== null && prev > 0 ? prev - 1 : images.length - 1));
               }}
               className="absolute left-0 md:left-4 z-10 w-12 h-12 border-brutal bg-black/60 hover:bg-accent text-white hover:text-black flex items-center justify-center transition-all cursor-pointer"
@@ -149,16 +161,29 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
             <div 
               className="relative w-full h-full max-w-4xl mx-auto flex flex-col items-center justify-center p-2"
             >
-              {/* Image Frame with click-to-zoom logic */}
+              {/* Image Frame with click-to-toggle-zoom & wheel-to-zoom logic */}
               <div 
                 onClick={(e) => {
                   e.stopPropagation();
-                  setIsZoomed(!isZoomed);
+                  setZoomScale((prev) => (prev > 1.0 ? 1.0 : 2.0));
                 }}
-                className="relative w-full h-full max-h-[82%] transition-transform duration-300 ease-out select-none cursor-pointer"
+                onWheel={(e) => {
+                  e.stopPropagation();
+                  const zoomFactor = 0.15;
+                  let newZoom = zoomScale;
+                  if (e.deltaY < 0) {
+                    // Scroll up -> Zoom in
+                    newZoom = Math.min(newZoom + zoomFactor, 3.5);
+                  } else {
+                    // Scroll down -> Zoom out
+                    newZoom = Math.max(newZoom - zoomFactor, 1.0);
+                  }
+                  setZoomScale(newZoom);
+                }}
+                className="relative w-full h-full max-h-[82%] transition-transform duration-200 ease-out select-none cursor-zoom-in"
                 style={{
-                  transform: isZoomed ? "scale(1.4)" : "scale(1)",
-                  zIndex: isZoomed ? 20 : 1
+                  transform: `scale(${zoomScale})`,
+                  zIndex: zoomScale > 1.0 ? 20 : 1
                 }}
               >
                 <Image 
@@ -180,7 +205,7 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
             <button 
               onClick={(e) => {
                 e.stopPropagation();
-                setIsZoomed(false);
+                setZoomScale(1.0);
                 setActiveIdx((prev) => (prev !== null && prev < images.length - 1 ? prev + 1 : 0));
               }}
               className="absolute right-0 md:right-4 z-10 w-12 h-12 border-brutal bg-black/60 hover:bg-accent text-white hover:text-black flex items-center justify-center transition-all cursor-pointer"
@@ -203,7 +228,7 @@ export default function ImageGallery({ images }: ImageGalleryProps) {
                   key={i}
                   onClick={(e) => {
                     e.stopPropagation();
-                    setIsZoomed(false);
+                    setZoomScale(1.0);
                     setActiveIdx(i);
                   }}
                   className={`relative w-12 md:w-16 h-12 md:h-16 border-brutal cursor-pointer overflow-hidden transition-all duration-300 bg-white/5 flex-shrink-0 ${
