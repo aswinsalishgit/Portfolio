@@ -263,6 +263,41 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                       </div>
                     </div>
                   </div>
+                ) : project.body ? (
+                  <div className="flex flex-col gap-12 mt-8">
+                    {project.body.map((sec, idx) => (
+                      <div key={idx} className="flex flex-col gap-6">
+                        <h3 className="font-header text-2xl uppercase tracking-tighter text-white">
+                          {sec.heading}
+                        </h3>
+                        <p className="font-mono text-sm text-foreground/70 leading-relaxed">
+                          {sec.text}
+                        </p>
+                      </div>
+                    ))}
+
+                    {project.awards && project.awards.length > 0 && (
+                      <div className="flex flex-col gap-8 bg-white/[0.02] p-8 border-brutal mt-4 relative overflow-hidden">
+                        <div className="flex items-center gap-3">
+                          <span className="w-2 h-2 bg-accent animate-pulse" />
+                          <span className="font-mono text-[10px] text-accent uppercase tracking-widest">Achievements // Recognition</span>
+                        </div>
+                        <div className="flex flex-col gap-4 border-l border-accent/30 pl-4">
+                          {project.awards.map((award, aIdx) => {
+                            const parts = award.split('|').map(s => s.trim());
+                            const title = parts[0];
+                            const desc = parts.slice(1).join(' | ');
+                            return (
+                              <div key={aIdx} className="flex flex-col gap-1">
+                                <span className="font-header text-lg text-white">{title.toUpperCase()}</span>
+                                {desc && <span className="font-mono text-xs text-foreground/50">{desc.toUpperCase()}</span>}
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 ) : (
                   <div className="flex flex-col gap-8 bg-white/5 p-8 border-l-2 border-accent">
                     <h3 className="font-header text-xl uppercase tracking-tighter text-white flex items-center gap-4">

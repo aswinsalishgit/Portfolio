@@ -9,6 +9,8 @@ export interface Project {
   fullDesc: string;
   role?: string;
   timeline?: string;
+  body?: { heading: string; text: string }[];
+  awards?: string[];
 }
 
 export const projects: Project[] = [
@@ -28,6 +30,24 @@ export const projects: Project[] = [
       "Process: CFD Simulation + Wind Tunnel Testing",
       "Scale: 1:1 Prototype",
       "Weight: 840kg (Estimated)"
+    ],
+    body: [
+      {
+        heading: "The Force-to-Voltage Architecture",
+        text: "My process was defined by brutal iteration and a drive for frugal engineering. I designed MSV1 inspired by the Mantis Shrimp's latch-mediated energy storage, decoupling force-loading from firing. Users interact with a single monolithic pedal. Crucially, I utilized a rotary potentiometer to deliver linear, highly accurate analog data. This maps the user's foot pressure to a Pulse Width Modulated (PWM) signal, dynamically driving a 12V DC solenoid to deliver anything from a soft nudge to a high-velocity break shot."
+      },
+      {
+        heading: "Mechanical Innovations",
+        text: "To ensure absolute aiming precision, the actuator rotation is controlled by a self-locking worm gear, eliminating aim-drift without the need for electronic brakes. Additionally, the system features a 'Bistable Vertical Suspension System' utilizing a push-push latch. The solenoid rests in a raised 'Hover State' to prevent surface dragging and retracts safely post-impact to avoid recoil damage."
+      },
+      {
+        heading: "Clinical & Medical Applications",
+        text: "MSV1 acts as a covert physiotherapy tool. For stroke survivors, modulating exact foot pressure provides real-time proprioceptive feedback, retraining lower-limb fine motor control and neuroplasticity through joyful, competitive gameplay. Furthermore, the core 'Force-to-Voltage' analog architecture is scalable for use in operating rooms as a hands-free Neurosurgical Suction Control system."
+      }
+    ],
+    awards: [
+      "1st Prize Winner | Drishti 2.0 Project Expo (Out of 50+ collegiate teams)",
+      "1st Prize Winner | EEE Inter-College Microproject Expo (Out of 150 candidates)"
     ]
   },
   {
