@@ -10,7 +10,7 @@ export default function SuccessPage() {
         
         <div className="flex flex-col gap-4">
           <span className="font-mono text-accent text-xs tracking-[0.4em] uppercase">
-            INQUIRY RECEIVED
+            INQUIRY COMPLETE
           </span>
           <h1 className="text-5xl md:text-7xl font-header leading-none uppercase tracking-tighter">
             MESSAGE <br /> <span className="text-white underline decoration-1 underline-offset-8">RECEIVED.</span>
@@ -18,7 +18,8 @@ export default function SuccessPage() {
         </div>
 
         <p className="font-mono text-xs text-foreground/40 uppercase max-w-sm leading-relaxed">
-          YOUR DETAILS HAVE BEEN SUCCESSFULLY ROUTED TO MY SYSTEM. I WILL REVIEW YOUR INQUIRY AND RESPOND WITHIN 24 TO 48 HOURS.
+          Your details have been successfully routed to my system. 
+          I will review your inquiry and respond within 24 to 48 hours.
         </p>
 
         <div className="flex flex-col gap-4 w-full sm:w-auto">
@@ -38,7 +39,7 @@ export default function SuccessPage() {
 
         {/* Decorative elements */}
         <div className="absolute bottom-4 right-4 font-mono text-[8px] text-foreground/10 uppercase">
-          STATUS: DELIVERED // ROUTING: RESEND API
+          Status: Delivered // Routing: Resend API
         </div>
       </div>
     </section>
