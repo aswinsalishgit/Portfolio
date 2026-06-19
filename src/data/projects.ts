@@ -11,6 +11,9 @@ export interface Project {
   timeline?: string;
   body?: { heading: string; text: string }[];
   awards?: string[];
+  techStack?: string[];
+  futureRoadmap?: string;
+  gallery?: { src: string; caption: string }[];
 }
 
 export const projects: Project[] = [
@@ -25,11 +28,11 @@ export const projects: Project[] = [
     role: "Project Lead & Product Engineer",
     timeline: "Fall 2025 - Present",
     technicalSpecs: [
-      "Drag Coefficient: 0.24 Cd",
-      "Material: Pre-preg Carbon Fiber",
-      "Process: CFD Simulation + Wind Tunnel Testing",
-      "Scale: 1:1 Prototype",
-      "Weight: 840kg (Estimated)"
+      "Power Input: 12V DC / Solenoid Firing",
+      "Control Unit: Arduino UNO R3",
+      "Aiming Gear: Self-Locking Worm Gear",
+      "Sensor Layer: Interlink Force Sensitive Resistors (FSR)",
+      "Switching: FQP30N06L N-Channel MOSFETs"
     ],
     body: [
       {
@@ -48,6 +51,34 @@ export const projects: Project[] = [
     awards: [
       "1st Prize Winner | Drishti 2.0 Project Expo (Out of 50+ collegiate teams)",
       "1st Prize Winner | EEE Inter-College Microproject Expo (Out of 150 candidates)"
+    ],
+    techStack: [
+      "C/C++",
+      "Arduino UNO R3",
+      "FQP30N06L MOSFETs",
+      "Interlink FSRs",
+      "Pulse Width Modulation (PWM)",
+      "Autodesk Fusion 360",
+      "Cantabile"
+    ],
+    futureRoadmap: "MSV1 will scale from a $60 prototype to a $25 mass-manufactured unit via a B2B2C clinic distribution model. Technologically, the Custom UI evolves into an AI assistant. Using computer vision, it will analyze carrom board states and input force to provide real-time stroke training. Long-term deployment targets include Stroke Rehabilitation, Geriatric Care, Para-Sports, and Neurosurgical Suction Control.",
+    gallery: [
+      {
+        src: "/images/projects/msv1/project-1.jpg",
+        caption: "Mantis Shrimp Variant 1 (MSV1): The final, production-ready product architecture."
+      },
+      {
+        src: "/images/projects/msv1/MSV1 Iso 1.jpg",
+        caption: "MSV1 Assembly Blueprint: Isometric perspective optimized in Fusion 360."
+      },
+      {
+        src: "/images/projects/msv1/CAMS v1 - CKTBox (Top View).jpg",
+        caption: "MSV1 'Works-Like' Actuator Testbed validating the variable-force PWM logic."
+      },
+      {
+        src: "/images/projects/msv1/Mantis-Shrimp V1 Prototype Setup.jpg",
+        caption: "Full System Integration Validation showcasing the floor-mounted pedal and CAMS Controller UI."
+      }
     ]
   },
   {

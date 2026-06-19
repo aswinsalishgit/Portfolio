@@ -6,9 +6,10 @@ import Image from "next/image";
 
 interface LightboxGalleryProps {
   images: string[];
+  captions?: string[];
 }
 
-export default function LightboxGallery({ images }: LightboxGalleryProps) {
+export default function LightboxGallery({ images, captions }: LightboxGalleryProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -73,6 +74,11 @@ export default function LightboxGallery({ images }: LightboxGalleryProps) {
               className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
+            {captions && captions[idx] && (
+              <span className="absolute bottom-2 left-2 font-mono text-[8px] text-accent font-semibold tracking-wider bg-black/80 px-2 py-0.5 border border-accent/20 max-w-[90%] truncate">
+                {captions[idx].toUpperCase()}
+              </span>
+            )}
           </div>
         ))}
       </div>
@@ -125,8 +131,15 @@ export default function LightboxGallery({ images }: LightboxGalleryProps) {
           </button>
 
           {/* Image Counter */}
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 font-mono text-xs text-white/50 tracking-widest bg-black/50 px-4 py-2 border border-white/10">
-            {currentIndex + 1} / {images.length}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 max-w-lg text-center z-50">
+            <div className="font-mono text-xs text-white/50 tracking-widest bg-black/50 px-4 py-2 border border-white/10">
+              {currentIndex + 1} / {images.length}
+            </div>
+            {captions && captions[currentIndex] && (
+              <p className="font-mono text-xs text-accent bg-black/80 px-4 py-2 border border-accent/20 uppercase max-w-xs md:max-w-md">
+                {captions[currentIndex]}
+              </p>
+            )}
           </div>
         </div>,
         document.body

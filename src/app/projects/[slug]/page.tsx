@@ -75,16 +75,38 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                  </span>
                </div>
 
-               {/* Images & Lightbox Gallery Section for Buffer */}
-               {project.slug === "buffer" && (
-                 <LightboxGallery images={[
-                   "/buffer1.jpg",
-                   "/buffer2.jpg",
-                   "/buffer3.jpg",
-                   "/buffer4.jpg",
-                   "/buffer5.jpg"
-                 ]} />
-               )}
+                {project.techStack && (
+                  <div className="flex flex-col gap-4">
+                    <h3 className="font-header text-xl uppercase tracking-widest text-white border-b border-white/10 pb-4">
+                      Tech Stack
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {project.techStack.map((tech, i) => (
+                        <span key={i} className="px-2.5 py-1 bg-white/5 border border-white/10 font-mono text-[10px] uppercase text-foreground/70">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Images & Lightbox Gallery Section for Buffer */}
+                {project.slug === "buffer" && (
+                  <LightboxGallery images={[
+                    "/buffer1.jpg",
+                    "/buffer2.jpg",
+                    "/buffer3.jpg",
+                    "/buffer4.jpg",
+                    "/buffer5.jpg"
+                  ]} />
+                )}
+
+                {project.gallery && (
+                  <LightboxGallery 
+                    images={project.gallery.map(img => img.src)} 
+                    captions={project.gallery.map(img => img.caption)} 
+                  />
+                )}
             </div>
 
             {/* Right side: Full Description */}
@@ -275,6 +297,17 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                         </p>
                       </div>
                     ))}
+
+                    {project.futureRoadmap && (
+                      <div className="flex flex-col gap-6">
+                        <h3 className="font-header text-2xl uppercase tracking-tighter text-white">
+                          Future Roadmap
+                        </h3>
+                        <p className="font-mono text-sm text-foreground/70 leading-relaxed">
+                          {project.futureRoadmap}
+                        </p>
+                      </div>
+                    )}
 
                     {project.awards && project.awards.length > 0 && (
                       <div className="flex flex-col gap-8 bg-white/[0.02] p-8 border-brutal mt-4 relative overflow-hidden">
