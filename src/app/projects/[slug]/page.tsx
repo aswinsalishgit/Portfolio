@@ -280,15 +280,19 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
                 <div className="grid grid-cols-2 gap-8 border-t border-white/10 pt-12">
                   <div className="flex flex-col gap-2">
-                    <span className="font-mono text-[10px] text-foreground/30 uppercase">{"Year"}</span>
-                    <span className="font-mono text-sm">{"2026 // SYSTEM"}</span>
+                    <span className="font-mono text-[10px] text-foreground/30 uppercase">
+                      {project.timeline ? "Timeline" : "Year"}
+                    </span>
+                    <span className="font-mono text-sm uppercase">
+                      {project.timeline ? project.timeline : "2026 // SYSTEM"}
+                    </span>
                   </div>
                   <div className="flex flex-col gap-2">
                     <span className="font-mono text-[10px] text-foreground/30 uppercase">
-                      {project.slug === "buffer" ? "Latest Version" : "Status"}
+                      {project.role ? "Role" : (project.slug === "buffer" ? "Latest Version" : "Status")}
                     </span>
                     <span className="font-mono text-sm uppercase">
-                      {project.slug === "buffer" ? "Buffer v1.0.0" : "Prototype V1.0"}
+                      {project.role ? project.role : (project.slug === "buffer" ? "Buffer v1.0.0" : "Prototype V1.0")}
                     </span>
                   </div>
                 </div>
