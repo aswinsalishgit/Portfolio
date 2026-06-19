@@ -43,10 +43,10 @@ export default function Footer() {
             <span className="font-mono text-[10px] uppercase text-foreground/40">Navigation</span>
             <ul className="flex flex-col gap-2">
               {[
+                { name: "Posts", href: "/posts" },
+                { name: "Projects", href: "/projects" },
                 { name: "Recruit", href: "/recruit" },
                 { name: "Articles", href: "/articles" },
-                { name: "Projects", href: "/projects" },
-                { name: "Posts", href: "/posts" },
                 { name: "Connect", href: "/connect" },
               ].map((item) => (
                 <li key={item.name}>

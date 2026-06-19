@@ -6,10 +6,10 @@ import { usePathname } from "next/navigation";
 import { useLenis } from "./SmoothScroll";
 
 const navLinks = [
+  { name: "Posts", href: "/posts" },
+  { name: "Projects", href: "/projects" },
   { name: "Recruit", href: "/recruit" },
   { name: "Articles", href: "/articles" },
-  { name: "Projects", href: "/projects" },
-  { name: "Posts", href: "/posts" },
   { name: "Connect", href: "/connect" },
 ];
 
