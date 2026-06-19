@@ -10,16 +10,15 @@ export default function SuccessPage() {
         
         <div className="flex flex-col gap-4">
           <span className="font-mono text-accent text-xs tracking-[0.4em] uppercase">
-            [TRANSMISSION_COMPLETE]
+            INQUIRY RECEIVED
           </span>
           <h1 className="text-5xl md:text-7xl font-header leading-none uppercase tracking-tighter">
-            Mission <br /> <span className="text-white underline decoration-1 underline-offset-8">Logged.</span>
+            MESSAGE <br /> <span className="text-white underline decoration-1 underline-offset-8">RECEIVED.</span>
           </h1>
         </div>
 
         <p className="font-mono text-xs text-foreground/40 uppercase max-w-sm leading-relaxed">
-          Your parameters have been securely stored in the mainframe. 
-          Expect a response once the data has been analyzed.
+          YOUR DETAILS HAVE BEEN SUCCESSFULLY ROUTED TO MY SYSTEM. I WILL REVIEW YOUR INQUIRY AND RESPOND WITHIN 24 TO 48 HOURS.
         </p>
 
         <div className="flex flex-col gap-4 w-full sm:w-auto">
@@ -28,7 +27,7 @@ export default function SuccessPage() {
             className="group flex items-center justify-center gap-4 border border-accent bg-accent px-10 py-4 hover:bg-transparent hover:text-accent transition-all duration-300"
           >
             <span className="font-header text-sm tracking-widest uppercase text-black group-hover:text-accent">
-              RETURN TO BASE
+              RETURN TO PORTFOLIO
             </span>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-black group-hover:text-accent">
               <line x1="19" y1="12" x2="5" y2="12"></line>
@@ -39,7 +38,7 @@ export default function SuccessPage() {
 
         {/* Decorative elements */}
         <div className="absolute bottom-4 right-4 font-mono text-[8px] text-foreground/10 uppercase">
-          Status: Data_Persisted // ID: SYSTEM_LOG_ACK
+          STATUS: DELIVERED // ROUTING: RESEND API
         </div>
       </div>
     </section>
