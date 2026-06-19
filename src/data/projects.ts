@@ -12,7 +12,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: "01",
-    slug: "aerodynamics-prototype",
+    slug: "msv1",
     title: "Mantis Shrimp Variant 1",
     category: "MSV1",
     image: "/project-1.jpeg",
