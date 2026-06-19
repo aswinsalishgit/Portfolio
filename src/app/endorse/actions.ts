@@ -19,7 +19,7 @@ export async function submitEndorsement(formData: FormData) {
     ]);
 
   if (error) {
-    console.error("Supabase Error:", error);
+    console.error("Supabase Error:", JSON.stringify(error, null, 2), error?.message || error?.code);
     return { success: false, error: "Failed to store endorsement." };
   }
 
@@ -36,7 +36,7 @@ export async function getEndorsements() {
     .order("created_at", { ascending: false });
 
   if (error) {
-    console.error("Supabase Error:", error);
+    console.error("Supabase Error:", JSON.stringify(error, null, 2), error?.message || error?.code);
     return [];
   }
 
