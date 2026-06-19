@@ -10,7 +10,7 @@ const navLinks = [
   { name: "Projects", href: "/projects" },
   { name: "Recruit", href: "/recruit" },
   { name: "Articles", href: "/articles" },
-  { name: "Connect", href: "/connect" },
+  { name: "Connect", href: "/contact" },
 ];
 
 export default function Header() {
