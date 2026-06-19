@@ -38,13 +38,13 @@ export default function ContactPage() {
       <div className="flex flex-col gap-12">
         <div className="flex flex-col gap-4">
           <span className="font-mono text-accent text-xs tracking-[0.3em] uppercase animate-pulse">
-            [PROJECT_INITIATION]
+            DIRECT CONTACT
           </span>
           <h1 className="text-5xl md:text-8xl font-header leading-[0.9] uppercase tracking-tighter">
-            Establishing <br /> <span className="text-accent underline decoration-1 underline-offset-8">Connection.</span>
+            INITIATE <br /> <span className="text-accent underline decoration-1 underline-offset-8">INQUIRY.</span>
           </h1>
           <p className="font-mono text-xs text-foreground/40 mt-4 uppercase max-w-md">
-            System ready for data intake. Please provide mission parameters below.
+            SECURE COMMUNICATION CHANNEL FOR DEVELOPMENT OPPORTUNITIES, COLLABORATIONS, AND TECHNICAL RECRUITMENT.
           </p>
         </div>
 
@@ -61,7 +61,7 @@ export default function ContactPage() {
               type="text" 
               id="name"
               name="name"
-              placeholder="OPERATOR NAME"
+              placeholder="ENTER YOUR NAME"
               required
               className="bg-transparent border-b border-white/20 pb-4 font-mono text-lg md:text-xl uppercase placeholder:text-foreground/10 focus:outline-none focus:border-accent transition-all selection:bg-accent selection:text-black"
             />
@@ -76,7 +76,7 @@ export default function ContactPage() {
               type="email" 
               id="email"
               name="email"
-              placeholder="COMM_LINK@DOMAIN.COM"
+              placeholder="NAME@DOMAIN.COM"
               required
               className="bg-transparent border-b border-white/20 pb-4 font-mono text-lg md:text-xl uppercase placeholder:text-foreground/10 focus:outline-none focus:border-accent transition-all selection:bg-accent selection:text-black"
             />
@@ -95,7 +95,7 @@ export default function ContactPage() {
                 defaultValue=""
                 className="w-full bg-transparent border-b border-white/20 pb-4 font-mono text-lg md:text-xl uppercase focus:outline-none focus:border-accent transition-all appearance-none cursor-pointer selection:bg-accent selection:text-black"
               >
-                <option value="" disabled className="bg-black text-foreground/20">IDENTIFY ENTITY</option>
+                <option value="" disabled className="bg-black text-foreground/20">IDENTIFY YOUR ROLE</option>
                 <option value="Recruiter" className="bg-black text-white">RECRUITER</option>
                 <option value="Client" className="bg-black text-white">CLIENT</option>
                 <option value="Collaborator" className="bg-black text-white">COLLABORATOR</option>
@@ -110,10 +110,10 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* 04 // PROJECT MESSAGE */}
+          {/* 04 // INQUIRY MESSAGE */}
           <div className="flex flex-col gap-4 group md:col-span-2">
             <label htmlFor="message" className="font-mono text-[10px] md:text-xs text-foreground/40 uppercase tracking-widest group-focus-within:text-accent transition-colors">
-              04 // PROJECT MESSAGE
+              04 // INQUIRY MESSAGE
             </label>
             <textarea 
               id="message"
