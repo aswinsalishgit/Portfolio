@@ -63,7 +63,7 @@ export default function ContactPage() {
               name="name"
               placeholder="ENTER YOUR NAME"
               required
-              className="bg-transparent border-b border-white/20 pb-4 font-mono text-lg md:text-xl uppercase placeholder:text-foreground/10 focus:outline-none focus:border-accent transition-all selection:bg-accent selection:text-black"
+              className="bg-transparent border-b border-white/20 pb-4 font-mono text-lg md:text-xl placeholder:text-foreground/10 focus:outline-none focus:border-accent transition-all selection:bg-accent selection:text-black"
             />
           </div>
 
@@ -78,7 +78,7 @@ export default function ContactPage() {
               name="email"
               placeholder="NAME@DOMAIN.COM"
               required
-              className="bg-transparent border-b border-white/20 pb-4 font-mono text-lg md:text-xl uppercase placeholder:text-foreground/10 focus:outline-none focus:border-accent transition-all selection:bg-accent selection:text-black"
+              className="bg-transparent border-b border-white/20 pb-4 font-mono text-lg md:text-xl placeholder:text-foreground/10 focus:outline-none focus:border-accent transition-all selection:bg-accent selection:text-black"
             />
           </div>
 
@@ -93,7 +93,7 @@ export default function ContactPage() {
                 name="role"
                 required
                 defaultValue=""
-                className="w-full bg-transparent border-b border-white/20 pb-4 font-mono text-lg md:text-xl uppercase focus:outline-none focus:border-accent transition-all appearance-none cursor-pointer selection:bg-accent selection:text-black"
+                className="w-full bg-transparent border-b border-white/20 pb-4 font-mono text-lg md:text-xl focus:outline-none focus:border-accent transition-all appearance-none cursor-pointer selection:bg-accent selection:text-black"
               >
                 <option value="" disabled className="bg-black text-foreground/20">IDENTIFY YOUR ROLE</option>
                 <option value="Recruiter" className="bg-black text-white">RECRUITER</option>
@@ -121,7 +121,7 @@ export default function ContactPage() {
               rows={4}
               placeholder="DESCRIBE THE MISSION..."
               required
-              className="bg-transparent border-b border-white/20 pb-4 font-mono text-lg md:text-xl uppercase placeholder:text-foreground/10 focus:outline-none focus:border-accent transition-all resize-none selection:bg-accent selection:text-black"
+              className="bg-transparent border-b border-white/20 pb-4 font-mono text-lg md:text-xl placeholder:text-foreground/10 focus:outline-none focus:border-accent transition-all resize-none selection:bg-accent selection:text-black"
             />
           </div>
 
