@@ -125,7 +125,7 @@ export default function LightboxGallery({ images, captions }: LightboxGalleryPro
           </button>
 
           {/* Main Image or Video */}
-          <div className="relative w-full h-full max-w-6xl max-h-[85vh] mx-16 flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
+          <div className="relative w-full h-full max-w-6xl max-h-[72vh] mb-24 mx-16 flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
             {images[currentIndex].endsWith(".mp4") ? (
               <video
                 src={images[currentIndex]}
