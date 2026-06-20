@@ -85,15 +85,6 @@ export default function LightboxGallery({ images, captions }: LightboxGalleryPro
               />
             )}
             <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
-            {img.endsWith(".mp4") && (
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="w-12 h-12 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white">
-                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 ml-0.5">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-              </div>
-            )}
             {captions && captions[idx] && (
               <span className="absolute bottom-2 left-2 font-mono text-[8px] text-accent font-semibold tracking-wider bg-black/80 px-2 py-0.5 border border-accent/20 max-w-[90%] truncate">
                 {captions[idx].toUpperCase()}
@@ -107,7 +98,11 @@ export default function LightboxGallery({ images, captions }: LightboxGalleryPro
       {isOpen && typeof document !== "undefined" && createPortal(
         <div 
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md"
-          onClick={closeLightbox}
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              closeLightbox();
+            }
+          }}
         >
           {/* Close Button */}
           <button 
@@ -140,6 +135,7 @@ export default function LightboxGallery({ images, captions }: LightboxGalleryPro
                 playsInline
                 controls
                 className="max-w-full max-h-full object-contain"
+                onClick={(e) => e.stopPropagation()}
               />
             ) : (
               <Image
