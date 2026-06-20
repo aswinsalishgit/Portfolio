@@ -64,8 +64,9 @@ export default function LightboxGallery({ images, captions }: LightboxGalleryPro
             key={idx} 
             className={`relative cursor-pointer overflow-hidden border border-white/10 group ${
               idx === 0 ? "col-span-2 aspect-[16/9]" : "aspect-square"
-            }`}
+            } select-none`}
             onClick={() => openLightbox(idx)}
+            onContextMenu={(e) => e.preventDefault()}
           >
             {img.endsWith(".mp4") ? (
               <video
@@ -75,21 +76,21 @@ export default function LightboxGallery({ images, captions }: LightboxGalleryPro
                 loop
                 playsInline
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                onContextMenu={(e) => e.preventDefault()}
               />
             ) : (
-              <Image
-                src={img}
-                alt={`Gallery image ${idx + 1}`}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-              />
+              <div className="relative w-full h-full">
+                <Image
+                  src={img}
+                  alt={`Gallery image ${idx + 1}`}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  draggable="false"
+                />
+                <div className="absolute inset-0 bg-transparent z-10" />
+              </div>
             )}
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
-            {captions && captions[idx] && (
-              <span className="absolute bottom-2 left-2 font-mono text-[8px] text-accent font-semibold tracking-wider bg-black/80 px-2 py-0.5 border border-accent/20 max-w-[90%] truncate">
-                {captions[idx].toUpperCase()}
-              </span>
-            )}
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-0" />
           </div>
         ))}
       </div>
@@ -134,17 +135,23 @@ export default function LightboxGallery({ images, captions }: LightboxGalleryPro
                 loop
                 playsInline
                 controls
+                controlsList="nodownload"
                 className="max-w-full max-h-full object-contain"
                 onClick={(e) => e.stopPropagation()}
+                onContextMenu={(e) => e.preventDefault()}
               />
             ) : (
-              <Image
-                src={images[currentIndex]}
-                alt={`Lightbox image ${currentIndex + 1}`}
-                fill
-                className="object-contain"
-                priority
-              />
+              <div className="relative w-full h-full flex items-center justify-center select-none" onContextMenu={(e) => e.preventDefault()}>
+                <Image
+                  src={images[currentIndex]}
+                  alt={`Lightbox image ${currentIndex + 1}`}
+                  fill
+                  className="object-contain"
+                  priority
+                  draggable="false"
+                />
+                <div className="absolute inset-0 bg-transparent z-10" />
+              </div>
             )}
           </div>
 
@@ -163,11 +170,6 @@ export default function LightboxGallery({ images, captions }: LightboxGalleryPro
             <div className="font-mono text-xs text-white/50 tracking-widest bg-black/50 px-4 py-2 border border-white/10">
               {currentIndex + 1} / {images.length}
             </div>
-            {captions && captions[currentIndex] && (
-              <p className="font-mono text-xs text-accent bg-black/80 px-4 py-2 border border-accent/20 uppercase max-w-xs md:max-w-md">
-                {captions[currentIndex]}
-              </p>
-            )}
           </div>
         </div>,
         document.body
