@@ -1,8 +1,205 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
+
+interface CustomVideoPlayerProps {
+  src: string;
+}
+
+function CustomVideoPlayer({ src }: CustomVideoPlayerProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    setIsMuted(video.muted);
+    setIsPlaying(!video.paused);
+  }, [src]);
+
+  const togglePlay = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (isPlaying) {
+      video.pause();
+      setIsPlaying(false);
+    } else {
+      video.play().catch(() => {});
+      setIsPlaying(true);
+    }
+  };
+
+  const toggleMute = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = !video.muted;
+    setIsMuted(video.muted);
+  };
+
+  const handleTimeUpdate = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    setCurrentTime(video.currentTime);
+  };
+
+  const handleLoadedMetadata = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    setDuration(video.duration);
+  };
+
+  const formatTime = (time: number) => {
+    const mins = Math.floor(time / 60);
+    const secs = Math.floor(time % 60);
+    return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
+  };
+
+  const handleProgressClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const video = videoRef.current;
+    if (!video || duration === 0) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const pos = (e.clientX - rect.left) / rect.width;
+    video.currentTime = pos * duration;
+    setCurrentTime(pos * duration);
+  };
+
+  const toggleFullscreen = () => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    if (!document.fullscreenElement) {
+      container.requestFullscreen().then(() => {
+        setIsFullscreen(true);
+      }).catch(() => {});
+    } else {
+      document.exitFullscreen().then(() => {
+        setIsFullscreen(false);
+      }).catch(() => {});
+    }
+  };
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    return () => {
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
+    };
+  }, []);
+
+  const progressPercent = duration > 0 ? (currentTime / duration) * 100 : 0;
+
+  return (
+    <div 
+      ref={containerRef} 
+      className="relative w-full h-full flex items-center justify-center group/player select-none"
+      onContextMenu={(e) => e.preventDefault()}
+    >
+      <video
+        ref={videoRef}
+        src={src}
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="max-w-full max-h-full object-contain cursor-pointer"
+        onClick={togglePlay}
+        onTimeUpdate={handleTimeUpdate}
+        onLoadedMetadata={handleLoadedMetadata}
+      />
+
+      {/* Custom Control Overlay */}
+      <div 
+        className="absolute bottom-4 left-4 right-4 bg-black/90 border border-white/10 p-4 flex flex-col gap-3 transition-opacity duration-300 opacity-0 group-hover/player:opacity-100 focus-within:opacity-100 z-20 font-mono text-xs select-none"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Progress Bar Container */}
+        <div 
+          className="relative h-1.5 w-full bg-white/10 cursor-pointer group/progress"
+          onClick={handleProgressClick}
+        >
+          <div 
+            style={{ width: `${progressPercent}%` }}
+            className="absolute top-0 left-0 h-full bg-accent transition-all duration-75"
+          />
+          <div className="absolute top-0 right-0 h-full w-0 group-hover/progress:w-2 bg-white" />
+        </div>
+
+        {/* Buttons and telemetries */}
+        <div className="flex justify-between items-center text-white">
+          <div className="flex items-center gap-6">
+            {/* Play/Pause */}
+            <button 
+              onClick={togglePlay}
+              className="hover:text-accent transition-colors flex items-center justify-center p-1"
+            >
+              {isPlaying ? (
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <rect x="6" y="4" width="4" height="16" />
+                  <rect x="14" y="4" width="4" height="16" />
+                </svg>
+              ) : (
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              )}
+            </button>
+
+            {/* Time display */}
+            <div className="text-[10px] text-foreground/50 tracking-wider">
+              {formatTime(currentTime)} <span className="mx-1 text-white/20">/</span> {formatTime(duration)}
+            </div>
+          </div>
+
+          <div className="flex items-center gap-6">
+            {/* Mute/Unmute */}
+            <button 
+              onClick={toggleMute}
+              className="hover:text-accent transition-colors flex items-center justify-center p-1"
+            >
+              {isMuted ? (
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" />
+                  <line x1="23" y1="9" x2="17" y2="15" />
+                  <line x1="17" y1="9" x2="23" y2="15" />
+                </svg>
+              ) : (
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" />
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
+                </svg>
+              )}
+            </button>
+
+            {/* Fullscreen */}
+            <button 
+              onClick={toggleFullscreen}
+              className="hover:text-accent transition-colors flex items-center justify-center p-1"
+            >
+              {isFullscreen ? (
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 14h6v6M20 10h-6V4M14 10l7-7M10 14l-7 7" />
+                </svg>
+              ) : (
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3" />
+                </svg>
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 interface LightboxGalleryProps {
   images: string[];
@@ -126,20 +323,9 @@ export default function LightboxGallery({ images, captions }: LightboxGalleryPro
           </button>
 
           {/* Main Image or Video */}
-          <div className="relative w-full h-[60vh] max-w-4xl mb-24 mx-16 flex items-center justify-center border border-white/10 bg-black/60" onClick={(e) => e.stopPropagation()}>
+          <div className="relative w-full h-full max-w-6xl max-h-[72vh] mb-24 mx-16 flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
             {images[currentIndex].endsWith(".mp4") ? (
-              <video
-                src={images[currentIndex]}
-                autoPlay
-                muted
-                loop
-                playsInline
-                controls
-                controlsList="nodownload"
-                className="max-w-full max-h-full object-contain"
-                onClick={(e) => e.stopPropagation()}
-                onContextMenu={(e) => e.preventDefault()}
-              />
+              <CustomVideoPlayer src={images[currentIndex]} />
             ) : (
               <div className="relative w-full h-full flex items-center justify-center select-none" onContextMenu={(e) => e.preventDefault()}>
                 <Image
