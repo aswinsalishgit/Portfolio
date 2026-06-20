@@ -64,20 +64,40 @@ export const projects: Project[] = [
     futureRoadmap: "MSV1 will scale from a $60 prototype to a $25 mass-manufactured unit via a B2B2C clinic distribution model. Technologically, the Custom UI evolves into an AI assistant. Using computer vision, it will analyze carrom board states and input force to provide real-time stroke training. Long-term deployment targets include Stroke Rehabilitation, Geriatric Care, Para-Sports, and Neurosurgical Suction Control.",
     gallery: [
       {
-        src: "/images/projects/msv1/project-1.jpg",
-        caption: "Mantis Shrimp Variant 1 (MSV1): The final, production-ready product architecture."
+        src: "/msv1/MSV1 Image 1.jpeg",
+        caption: "Mantis Shrimp Variant 1 (MSV1) - Side View Profile"
       },
       {
-        src: "/images/projects/msv1/MSV1 Iso 1.jpg",
-        caption: "MSV1 Assembly Blueprint: Isometric perspective optimized in Fusion 360."
+        src: "/msv1/MSV1 Image 2.jpeg",
+        caption: "MSV1 Isometric View optimized in SolidWorks/Fusion 360"
       },
       {
-        src: "/images/projects/msv1/CAMS v1 - CKTBox (Top View).jpg",
-        caption: "MSV1 'Works-Like' Actuator Testbed validating the variable-force PWM logic."
+        src: "/msv1/CAMS v1 - CKTBox (Top View).jpg",
+        caption: "MSV1 'Works-Like' Actuator Testbed validating the variable-force PWM logic"
       },
       {
-        src: "/images/projects/msv1/Mantis-Shrimp V1 Prototype Setup.jpg",
-        caption: "Full System Integration Validation showcasing the floor-mounted pedal and CAMS Controller UI."
+        src: "/msv1/Mantis-Shrimp V1 Prototype Setup.jpg",
+        caption: "Full System Integration Validation showcasing the floor-mounted pedal and CAMS Controller UI"
+      },
+      {
+        src: "/msv1/MSV1 Image 4.jpeg",
+        caption: "Actuator arm assembly and chassis detailing"
+      },
+      {
+        src: "/msv1/MSV1 Image 5.jpeg",
+        caption: "Electromechanical firing mechanism components breakdown"
+      },
+      {
+        src: "/msv1/Mantis-Shrimp V1 Block Diagram.png",
+        caption: "System Level Architecture Block Diagram"
+      },
+      {
+        src: "/msv1/Mantis-Shrimp V1 Flowchart.png",
+        caption: "Force-to-Voltage Software Logic Flowchart"
+      },
+      {
+        src: "/msv1/Mantis-Shrimp V1 Prototype Demo.mp4",
+        caption: "Mantis-Shrimp V1 Prototype Action Demo - Hands-Free Firing Sequence"
       }
     ]
   },
