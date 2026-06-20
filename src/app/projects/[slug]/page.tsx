@@ -4,6 +4,7 @@ import Link from "next/link";
 import PageReveal from "@/components/PageReveal";
 import { notFound } from "next/navigation";
 import LightboxGallery from "@/components/LightboxGallery";
+import MainImageWrapper from "@/components/MainImageWrapper";
 
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -37,16 +38,18 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           </div>
 
           {/* Main Image */}
-          <div className="relative aspect-[16/10] md:aspect-[21/9] w-full border-brutal overflow-hidden group">
-             <Image 
-               src={project.image}
-               alt={project.title}
-               fill
-               priority
-               className="object-cover transition-transform duration-1000 group-hover:scale-105"
-             />
-             <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-700" />
-          </div>
+          <MainImageWrapper>
+            <div className="relative aspect-[16/10] md:aspect-[21/9] w-full border-brutal overflow-hidden group">
+               <Image 
+                 src={project.image}
+                 alt={project.title}
+                 fill
+                 priority
+                 className="object-cover transition-transform duration-1000 group-hover:scale-105"
+               />
+               <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-700" />
+            </div>
+          </MainImageWrapper>
 
           {/* Detailed Content */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mt-8">
@@ -92,17 +95,21 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
                 {/* Images & Lightbox Gallery Section for Buffer */}
                 {project.slug === "buffer" && (
-                  <LightboxGallery images={[
-                    "/buffer1.jpg",
-                    "/buffer2.jpg",
-                    "/buffer3.jpg",
-                    "/buffer4.jpg",
-                    "/buffer5.jpg"
-                  ]} />
+                  <LightboxGallery 
+                    mainImage={project.image}
+                    images={[
+                      "/buffer1.jpg",
+                      "/buffer2.jpg",
+                      "/buffer3.jpg",
+                      "/buffer4.jpg",
+                      "/buffer5.jpg"
+                    ]} 
+                  />
                 )}
 
                 {project.gallery && (
                   <LightboxGallery 
+                    mainImage={project.image}
                     images={project.gallery.map(img => img.src)} 
                     captions={project.gallery.map(img => img.caption)} 
                   />

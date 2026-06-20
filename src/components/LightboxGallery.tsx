@@ -11,11 +11,51 @@ interface CustomVideoPlayerProps {
 function CustomVideoPlayer({ src }: CustomVideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [showControls, setShowControls] = useState(true);
+
+  useEffect(() => {
+    const resetTimer = () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      if (!document.fullscreenElement) {
+        setShowControls(true);
+        return;
+      }
+      setShowControls(true);
+      timeoutRef.current = setTimeout(() => {
+        setShowControls(false);
+      }, 5000);
+    };
+
+    const handleFullscreenChange = () => {
+      const isCurrentlyFullscreen = !!document.fullscreenElement;
+      setIsFullscreen(isCurrentlyFullscreen);
+      resetTimer();
+    };
+
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener("mousemove", resetTimer);
+    }
+
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
+      if (container) {
+        container.removeEventListener("mousemove", resetTimer);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -85,16 +125,6 @@ function CustomVideoPlayer({ src }: CustomVideoPlayerProps) {
     }
   };
 
-  useEffect(() => {
-    const handleFullscreenChange = () => {
-      setIsFullscreen(!!document.fullscreenElement);
-    };
-    document.addEventListener("fullscreenchange", handleFullscreenChange);
-    return () => {
-      document.removeEventListener("fullscreenchange", handleFullscreenChange);
-    };
-  }, []);
-
   const progressPercent = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   return (
@@ -118,7 +148,11 @@ function CustomVideoPlayer({ src }: CustomVideoPlayerProps) {
 
       {/* Custom Control Overlay */}
       <div 
-        className="absolute bottom-4 left-4 right-4 bg-black/90 border border-white/10 p-4 flex flex-col gap-3 transition-opacity duration-300 opacity-0 group-hover/player:opacity-100 focus-within:opacity-100 z-20 font-mono text-xs select-none"
+        className={`absolute bottom-4 left-4 right-4 bg-black/90 border border-white/10 p-4 flex flex-col gap-3 transition-opacity duration-300 z-20 font-mono text-xs select-none ${
+          isFullscreen 
+            ? (showControls ? "opacity-100" : "opacity-0 pointer-events-none") 
+            : "opacity-0 group-hover/player:opacity-100 focus-within:opacity-100"
+        }`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Progress Bar Container */}
@@ -204,17 +238,32 @@ function CustomVideoPlayer({ src }: CustomVideoPlayerProps) {
 interface LightboxGalleryProps {
   images: string[];
   captions?: string[];
+  mainImage?: string;
 }
 
-export default function LightboxGallery({ images, captions }: LightboxGalleryProps) {
+export default function LightboxGallery({ images, mainImage }: LightboxGalleryProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const lightboxImages = mainImage ? [mainImage, ...images] : images;
+
+  useEffect(() => {
+    const handleOpen = (e: Event) => {
+      const customEvent = e as CustomEvent<{ index: number }>;
+      setCurrentIndex(customEvent.detail.index);
+      setIsOpen(true);
+    };
+    window.addEventListener("open-project-lightbox", handleOpen);
+    return () => {
+      window.removeEventListener("open-project-lightbox", handleOpen);
+    };
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") setIsOpen(false);
-      if (e.key === "ArrowLeft") setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-      if (e.key === "ArrowRight") setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+      if (e.key === "ArrowLeft") setCurrentIndex((prev) => (prev === 0 ? lightboxImages.length - 1 : prev - 1));
+      if (e.key === "ArrowRight") setCurrentIndex((prev) => (prev === lightboxImages.length - 1 ? 0 : prev + 1));
     };
 
     if (isOpen) {
@@ -228,7 +277,7 @@ export default function LightboxGallery({ images, captions }: LightboxGalleryPro
       window.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "";
     };
-  }, [isOpen, images.length]);
+  }, [isOpen, lightboxImages.length]);
 
   if (!images || images.length === 0) return null;
 
@@ -241,12 +290,12 @@ export default function LightboxGallery({ images, captions }: LightboxGalleryPro
 
   const prevImage = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+    setCurrentIndex((prev) => (prev === 0 ? lightboxImages.length - 1 : prev - 1));
   };
 
   const nextImage = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+    setCurrentIndex((prev) => (prev === lightboxImages.length - 1 ? 0 : prev + 1));
   };
 
   return (
@@ -262,7 +311,7 @@ export default function LightboxGallery({ images, captions }: LightboxGalleryPro
             className={`relative cursor-pointer overflow-hidden border border-white/10 group ${
               idx === 0 ? "col-span-2 aspect-[16/9]" : "aspect-square"
             } select-none`}
-            onClick={() => openLightbox(idx)}
+            onClick={() => openLightbox(mainImage ? idx + 1 : idx)}
             onContextMenu={(e) => e.preventDefault()}
           >
             {img.endsWith(".mp4") ? (
@@ -324,12 +373,12 @@ export default function LightboxGallery({ images, captions }: LightboxGalleryPro
 
           {/* Main Image or Video */}
           <div className="relative w-full h-full max-w-6xl max-h-[72vh] mb-24 mx-16 flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
-            {images[currentIndex].endsWith(".mp4") ? (
-              <CustomVideoPlayer src={images[currentIndex]} />
+            {lightboxImages[currentIndex].endsWith(".mp4") ? (
+              <CustomVideoPlayer src={lightboxImages[currentIndex]} />
             ) : (
               <div className="relative w-full h-full flex items-center justify-center select-none" onContextMenu={(e) => e.preventDefault()}>
                 <Image
-                  src={images[currentIndex]}
+                  src={lightboxImages[currentIndex]}
                   alt={`Lightbox image ${currentIndex + 1}`}
                   fill
                   className="object-contain"
@@ -354,7 +403,7 @@ export default function LightboxGallery({ images, captions }: LightboxGalleryPro
           {/* Image Counter */}
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 max-w-lg text-center z-50">
             <div className="font-mono text-xs text-white/50 tracking-widest bg-black/50 px-4 py-2 border border-white/10">
-              {currentIndex + 1} / {images.length}
+              {currentIndex + 1} / {lightboxImages.length}
             </div>
           </div>
         </div>,

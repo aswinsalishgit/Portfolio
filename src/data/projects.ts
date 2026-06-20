@@ -22,7 +22,7 @@ export const projects: Project[] = [
     slug: "msv1",
     title: "Mantis Shrimp Variant 1 (MSV1)",
     category: "Mechatronics // Healthcare Tech // Assistive Robotics // Hardware Integration",
-    image: "/project-1.jpeg",
+    image: "/msv1/MSV1 Image 1.jpeg",
     desc: "A bio-inspired, foot-operated electromechanical actuator engineered for inclusive tabletop gameplay and hands-free medical control systems.",
     fullDesc: "As of 2026, the industry has mastered digital accessibility, but physical tabletop recreation remains exclusionary. Existing physical assistive devices are either crude, unpredictable spring-loaded plastics, or unaffordable $30,000 robotic arms. MSV1 shatters this binary. It is the first frugal electromechanical actuator to achieve clinical-grade precision. By translating lower-limb pressure into high-velocity, precision strikes, it enables inclusive Carrom gameplay for upper-limb amputees while serving as a covert physiotherapy tool.",
     role: "Project Lead & Product Engineer",
@@ -63,10 +63,6 @@ export const projects: Project[] = [
     ],
     futureRoadmap: "MSV1 will scale from a $60 prototype to a $25 mass-manufactured unit via a B2B2C clinic distribution model. Technologically, the Custom UI evolves into an AI assistant. Using computer vision, it will analyze carrom board states and input force to provide real-time stroke training. Long-term deployment targets include Stroke Rehabilitation, Geriatric Care, Para-Sports, and Neurosurgical Suction Control.",
     gallery: [
-      {
-        src: "/msv1/MSV1 Image 1.jpeg",
-        caption: "Mantis Shrimp Variant 1 (MSV1) - Side View Profile"
-      },
       {
         src: "/msv1/MSV1 Image 2.jpeg",
         caption: "MSV1 Isometric View optimized in SolidWorks/Fusion 360"
